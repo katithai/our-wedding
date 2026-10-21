@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>our-wedding</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+</head>
+<body>
+
+  <!-- Div 1: Thẻ chứa toàn màn hình (Background ngoài cùng) -->
+  <div class="wedding-card-overlay">
+    <!-- Div 2: Khung thiệp chính (Thẻ màu kem có bo góc) -->
+    <div class="card-container">
+      <!-- Div 3: Họa tiết hoa bên trái (Position Absolute) -->
+      <div class="floral-decor floral-left"></div>
+      <!-- Div 4: Họa tiết hoa bên phải (Position Absolute) -->
+      <div class="floral-decor floral-right"></div>
+      <!-- Div 5: Khối nội dung trung tâm -->
+      <div class="card-content">
+        <!-- Div 7: Khối thông tin tên cô dâu chú rể -->
+        <div class="names-block">
+          <h1 class="groom-name">Cao Bằng</h1>
+          <span class="ampersand">&</span>
+          <h1 class="bride-name">Thanh Thúy</h1>
+        </div>
+        <!-- Div 8: Khối ngày tháng & lời mời (bao gồm họa tiết đường kẻ) -->
+        <div class="details-block">
+          <div class="divider"></div> <!-- Hoặc dùng pseudoclass ::before / ::after -->
+          <p class="wedding-date">3 tháng 1, 2026</p>
+          <p class="invitation-text">Thân Mời</p>
+        </div>
+        <!-- Div 9: Nút hành động "Mở thiệp" -->
+        <div class="action-btn">
+          <button class="btn-open">Mở thiệp</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <audio id="bgMusic" loop >
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
+  <script src="script.js"></script>
+</body>
+</html>

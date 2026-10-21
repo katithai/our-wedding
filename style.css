@@ -1,0 +1,164 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+  --font-script: "Great Vibes", cursive;
+  --font-cormorant: "Cormorant Garamond", serif;
+  --font-montserrat: "Montserrat", sans-serif;
+}
+
+body {
+
+}
+
+
+/* Thẻ chứa toàn màn hình Background ngoài cùng */
+.wedding-card-overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, #631219 0%, #2b0508 100%);
+  z-index: 9999;
+}
+
+.card-container {
+  position: relative;
+  width: 100%;
+  max-width: 520px; /* Chiều rộng tối đa trên màn hình lớn */
+  background-color: #fcf8f2; /* Màu kem nhạt */
+  border-radius: 4px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 
+              0 5px 15px rgba(0, 0, 0, 0.3);
+  padding: 40px 30px;
+  text-align: center;
+  overflow: hidden; /* Giữ họa tiết hoa không tràn ra ngoài góc bo */
+  margin: auto;
+}
+
+.card-content{
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.names-block{
+  font-family: var(--font-script);
+  color: #4a0d13;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.5px;
+}
+
+.wedding-date {
+  color: #555555;
+  font-size: 18px;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+
+.invitation-text {
+  color: #777777;
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+
+/* Div 9: Nút "Mở thiệp" */
+.action-btn {
+  width: 100%;
+}
+
+.btn-open {
+  background: linear-gradient(180deg, #531016 0%, #2d0609 100%);
+  color: #ffffff;
+  border: none;
+  padding: 12px 42px;
+  border-radius: 25px;
+  font-size: 17px;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(45, 6, 9, 0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-open:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(45, 6, 9, 0.6);
+}
+
+.btn-open:active {
+  transform: translateY(0);
+}
+
+/* Hiệu ứng mờ dần trong 0.8 giây */
+.fade-out {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.8s ease-in-out;
+}
+
+@media only screen and (max-width: 768px) {
+
+  .wedding-card-overlay {
+    padding: 20px;
+  }
+
+  .card-container {
+    width: 90%; /* Chiếm 90% chiều rộng màn hình điện thoại thay vì fix cứng */
+    width: 380px;
+    height: auto; /* Tự động ôm sát nội dung, tránh bị kéo dài khoảng trắng */
+    min-height: 450px; /* Chiều cao tối thiểu để thiệp trông vuông vắn, sang trọng */
+    padding: 35px 20px;
+    
+    /* Ép nội dung bên trong luôn nằm chính giữa thẻ thiệp */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .card-content {
+    /* Đảm bảo khối chứa chữ không bị lệch */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    margin: 0; 
+  }
+
+  .groom-name, .bride-name {
+    font-size: 34px; /* Tăng nhẹ size chữ để nổi bật hơn trên Mobile */
+  }
+
+  .floral-decor {
+    position: absolute; /* BẮT BUỘC: Giúp hoa nằm lơ lửng, không đẩy chữ xuống dưới */
+    width: 90px;
+    height: 160px;
+    z-index: 1;
+  }
+
+  .floral-left {
+    top: 0;
+    left: 0;
+  }
+
+  /* Di chuyển hoa bên phải xuống góc dưới cùng bên phải */
+  .floral-right {
+    top: auto;
+    bottom: 0;
+    right: 0;
+    background-position: bottom right;
+  }
+}
