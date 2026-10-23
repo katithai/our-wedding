@@ -26,13 +26,12 @@ body {
   width: 100%;
   height: 100%;
   background: radial-gradient(circle at center, #631219 0%, #2b0508 100%);
-  z-index: 9999;
 }
 
 .card-container {
   position: relative;
   width: 100%;
-  max-width: 520px; /* Chiều rộng tối đa trên màn hình lớn */
+  max-width: 590px; /* Chiều rộng tối đa trên màn hình lớn */
   background-color: #fcf8f2; /* Màu kem nhạt */
   border-radius: 4px;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 
@@ -41,6 +40,24 @@ body {
   text-align: center;
   overflow: hidden; /* Giữ họa tiết hoa không tràn ra ngoài góc bo */
   margin: auto;
+}
+
+.floral-left{
+  position: absolute;
+  /* Đẩy hoa cách viền trên ra một chút */
+  /* top: 15px;  */
+  left: 15px; /* Tách khỏi viền trái để không bị dính sát mép */
+  width: 150px; /* Thu gọn chiều rộng một chút để không lẹm vào chữ ở giữa */
+  height: 100%;
+  background-image: url('/images/decor/flower2-decoration.webp');
+  
+  /* QUAN TRỌNG: Dùng contain giúp hoa giữ nguyên tỷ lệ gốc, không bị xén mép khi kéo thả kích thước */
+  background-size: contain; 
+  background-position: left center; 
+  background-repeat: no-repeat;
+  
+  z-index: 1;
+  pointer-events: none; /* Đảm bảo hoa không vô tình che mất thao tác click vào nội dung bên dưới */
 }
 
 .card-content{
@@ -53,7 +70,7 @@ body {
 
 .names-block{
   font-family: var(--font-script);
-  color: #4a0d13;
+  color: #902B3A;
   font-size: 32px;
   font-weight: 500;
   line-height: 1.2;
@@ -79,7 +96,7 @@ body {
 }
 
 .btn-open {
-  background: linear-gradient(180deg, #531016 0%, #2d0609 100%);
+  background: #511419;
   color: #ffffff;
   border: none;
   padding: 12px 42px;
@@ -92,14 +109,14 @@ body {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.btn-open:hover {
+/* .btn-open:hover {
   transform: translateY(-1px);
   box-shadow: 0 8px 22px rgba(45, 6, 9, 0.6);
 }
 
 .btn-open:active {
   transform: translateY(0);
-}
+} */
 
 /* Hiệu ứng mờ dần trong 0.8 giây */
 .fade-out {
