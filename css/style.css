@@ -49,7 +49,7 @@ body {
   left: 15px; /* Tách khỏi viền trái để không bị dính sát mép */
   width: 150px; /* Thu gọn chiều rộng một chút để không lẹm vào chữ ở giữa */
   height: 100%;
-  background-image: url('/images/decor/flower2-decoration.webp');
+  background-image: url('../images/decor/flower2-decoration.webp');
   
   /* QUAN TRỌNG: Dùng contain giúp hoa giữ nguyên tỷ lệ gốc, không bị xén mép khi kéo thả kích thước */
   background-size: contain; 
