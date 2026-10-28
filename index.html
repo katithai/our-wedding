@@ -3,26 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Thiệp cưới Bằng & Thúy</title>
-  <link rel="stylesheet" href="css/style.css">
+  <title>Thiệp cưới Bằng &amp; Thúy</title>
+  <meta name="description" content="Trân trọng kính mời khách quý tham dự lễ cưới của Cao Bằng &amp; Thanh Thúy">
+  <meta name="theme-color" content="#511419">
+  <!-- Open Graph (chia sẻ link) -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Thiệp Cưới">
+  <meta property="og:locale" content="vi_VN">
+  <meta property="og:url" content="https://katithai.github.io/our-wedding/">
+  <meta property="og:title" content="Thiệp cưới Bằng &amp; Thúy">
+  <meta property="og:description" content="Trân trọng kính mời khách quý tham dự lễ cưới">
+  <meta property="og:image" content="https://katithai.github.io/our-wedding/images/album/thumbnail.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Thiệp cưới Bằng &amp; Thúy">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- Favicon -->
+  <link rel="icon" href="images/favicon.ico">
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Thiệp Cưới Online">
-  <meta property="og:locale" content="vi_VN">
-  <meta property="og:url" content="https://katithai.github.io/our-wedding/">
-  <meta property="og:title" content="Thiệp cưới Bằng & Thúy">
-  <meta property="og:description" content="Trân trọng kính mời khách quý tham dự lễ cưới">
-  <meta property="og:image" content="https://katithai.github.io/our-wedding/images/album/thumbnail.jpg">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Thiệp cưới Bằng & Thúy">
-
-
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
   <!-- Div 1: Thẻ chứa toàn màn hình (Background ngoài cùng) -->
   <div class="wedding-card-overlay">
     <!-- Div 2: Khung thiệp chính (Thẻ màu kem có bo góc) -->
@@ -36,14 +40,17 @@
         <!-- Div 7: Khối thông tin tên cô dâu chú rể -->
         <div class="names-block">
           <h1 class="groom-name">Cao Bằng</h1>
-          <span class="ampersand">&</span>
+          <span class="ampersand">&amp;</span>
           <h1 class="bride-name">Thanh Thúy</h1>
         </div>
         <!-- Div 8: Khối ngày tháng & lời mời (bao gồm họa tiết đường kẻ) -->
+        <!-- Ngày cưới và lời mời -->
         <div class="details-block">
           <div class="divider"></div> <!-- Hoặc dùng pseudoclass ::before / ::after -->
           <p class="wedding-date">3 tháng 1, 2026</p>
           <p class="invitation-text">Thân Mời</p>
+          <p id="guest-name"></p>
+          
         </div>
         <!-- Div 9: Nút hành động "Mở thiệp" -->
         <div class="action-btn">
@@ -52,11 +59,6 @@
       </div>
     </div>
   </div>
-
-
-
-
-
   <audio id="bgMusic" loop >
     <source src="audio/music.mp3" type="audio/mpeg">
   </audio>
