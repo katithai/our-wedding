@@ -19,7 +19,7 @@ if (encodedId && encodedId.trim() !== '') {
         // Giải mã Base64 hỗ trợ tiếng Việt có dấu
         const binary = atob(encodedId);
         const bytes = Uint8Array.from(binary, char => char.charCodeAt(0));
-        const guestName = new TextDecoder().decode(bytes);
+        const guestName = new TextDecoder('utf-8', { fatal: true }).decode(bytes);
         // Kiểm tra tên hợp lệ (không rỗng, không chứa ký tự lạ do decode sai)
         if (guestName && guestName.trim() !== '') {
             document.getElementById('guest-name').textContent = guestName;
