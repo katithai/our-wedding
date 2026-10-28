@@ -16,7 +16,6 @@ body {
   font-family: var(--font-sans);
 }
 
-
 /* overlay Background */
 .wedding-card-overlay {
   position: fixed;
@@ -29,10 +28,10 @@ body {
 .card-container {
   position: relative;
   width: 100%;
-  max-width: 590px;
-  margin: auto;                  /* căn giữa, không bị cắt khi tràn */
+  max-width: 600px;
+  margin: auto;             /* căn giữa, không bị cắt khi tràn */
   padding: 40px 30px;
-  overflow: hidden;              /* giữ hoa không tràn ra ngoài góc bo */
+  overflow: hidden;         /* giữ hoa không tràn ra ngoài góc bo */
   text-align: center;
   background-color: #fcf8f2;
   border-radius: 4px;
@@ -48,12 +47,11 @@ body {
   width: 150px; /* Thu gọn chiều rộng một chút để không lẹm vào chữ ở giữa */
   height: 100%;
   background-image: url('../images/decor/flower2-decoration.webp');
-  
   /* QUAN TRỌNG: Dùng contain giúp hoa giữ nguyên tỷ lệ gốc, không bị xén mép khi kéo thả kích thước */
   background-size: contain; 
   background-position: left center; 
   background-repeat: no-repeat;
-  
+
   z-index: 1;
   pointer-events: none; /* Đảm bảo hoa không vô tình che mất thao tác click vào nội dung bên dưới */
 }
@@ -75,6 +73,43 @@ body {
   letter-spacing: 0.5px;
 }
 
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  width: 100%;
+  max-width: 400px; /* Điều chỉnh độ rộng tối đa của đường kẻ */
+  margin: 5px auto;
+}
+
+/* Kẻ 2 đường kẻ biến thiên màu mờ dần ra phía ngoài */
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 2px;
+}
+
+/* Đường kẻ bên trái: Đậm ở gần icon, mờ dần về bên trái */
+.divider::before {
+  background: linear-gradient(to left, #511419, rgba(81, 20, 25, 0));
+}
+
+/* Đường kẻ bên phải: Đậm ở gần icon, mờ dần về bên phải */
+.divider::after {
+  background: linear-gradient(to right, #511419, rgba(81, 20, 25, 0));
+}
+
+/* Họa tiết hoa văn ở giữa */
+.divider span {
+  color: #511419;
+  font-size: 22px;
+  line-height: 1;
+  transform: rotate(-15deg); /* Nghiêng nhẹ giống hình */
+  display: inline-block;
+}
+
 .wedding-date {
   color: #555555;
   font-size: 18px;
@@ -89,7 +124,8 @@ body {
 }
 
 #guest-name {
-  margin: 8px 0 30px;
+  margin: 8px 0 20px;
+  font-size: 21px;
 }
 
 /* Div 9: Nút "Mở thiệp" */
@@ -155,7 +191,7 @@ body {
 @media only screen and (max-width: 768px) {
 
   .wedding-card-overlay {
-    padding: 20px;
+    padding: 35px;
   }
 
   .card-container {
