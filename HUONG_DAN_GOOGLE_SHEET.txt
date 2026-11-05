@@ -1,0 +1,88 @@
+================================================================================
+HƯỚNG DẪN KẾT NỐI SỔ LƯU BÚT & XÁC NHẬN THAM DỰ VÀO GOOGLE SHEETS (CHỈ 2 PHÚT)
+================================================================================
+
+BƯỚC 1: TẠO FILE GOOGLE SHEETS
+1. Mở https://sheets.new để tạo 1 bảng tính Google Sheets mới.
+2. Đặt tên file tùy ý (ví dụ: "Danh Sách Khách Mời & Lời Chúc Đám Cưới").
+
+BƯỚC 2: DÁN ĐOẠN MÃ TỰ ĐỘNG VÀO APPS SCRIPT
+1. Trên thanh menu của Google Sheets, bấm vào:
+   Tiện ích mở rộng (Extensions) -> Apps Script
+2. Xóa hết chữ có sẵn trong khung soạn thảo, rồi COPY toàn bộ đoạn code bên dưới dán vào:
+
+--------------------------------------------------------------------------------
+function doGet(e) {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var sheet = ss.getSheetByName('SoLuuBut');
+  if (!sheet) {
+    return ContentService.createTextOutput(JSON.stringify({ wishes: [] }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+
+  var rows = sheet.getDataRange().getValues();
+  var wishes = [];
+  // Bỏ qua dòng tiêu đề (dòng 0), đọc từ dòng mới nhất lên
+  for (var i = rows.length - 1; i >= 1; i--) {
+    var timestamp = rows[i][0];
+    var name = rows[i][1];
+    var message = rows[i][2];
+    var approved = rows[i][3];
+    // Chỉ trả về những lời chúc có cột Duyệt = TRUE
+    if (approved === true || String(approved).toUpperCase() === 'TRUE') {
+      wishes.push({
+        timestamp: String(timestamp),
+        name: String(name),
+        message: String(message)
+      });
+    }
+  }
+
+  return ContentService.createTextOutput(JSON.stringify({ wishes: wishes }))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+
+function doPost(e) {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var data = JSON.parse(e.postData.contents);
+
+  if (data.type === 'wish') {
+    var wishSheet = ss.getSheetByName('SoLuuBut');
+    if (!wishSheet) {
+      wishSheet = ss.insertSheet('SoLuuBut');
+      wishSheet.appendRow(['Thời gian', 'Tên người gửi', 'Lời chúc', 'Duyệt (TRUE = Hiện, FALSE = Ẩn)']);
+      wishSheet.getRange('A1:D1').setFontWeight('bold');
+    }
+    var isApproved = data.approved !== false;
+    wishSheet.appendRow([data.timestamp || new Date(), data.name, data.message, isApproved]);
+  } else if (data.type === 'rsvp') {
+    var rsvpSheet = ss.getSheetByName('XacNhanThamDu');
+    if (!rsvpSheet) {
+      rsvpSheet = ss.insertSheet('XacNhanThamDu');
+      rsvpSheet.appendRow(['Thời gian', 'Tên khách mời', 'Trạng thái', 'Số lượng người']);
+      rsvpSheet.getRange('A1:D1').setFontWeight('bold');
+    }
+    rsvpSheet.appendRow([data.timestamp || new Date(), data.name, data.attend, data.guestCount]);
+  }
+
+  return ContentService.createTextOutput(JSON.stringify({ ok: true }))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+--------------------------------------------------------------------------------
+
+BƯỚC 3: LẤY LINK & DÁN VÀO FILE js/config.js
+1. Trong trang Apps Script, bấm nút "Triển khai" (Deploy) màu xanh ở góc trên bên phải -> Chọn "Tùy chọn triển khai mới" (New deployment).
+2. Bấm biểu tượng bánh răng ⚙️ (Chọn loại) -> Chọn "Ứng dụng web" (Web app).
+3. Ở mục "Ai có quyền truy cập" (Who has access): Bắt buộc chọn "Bất kỳ ai" (Anyone).
+4. Bấm "Triển khai" (Deploy) -> Cấp quyền (Authorize access -> Chọn tài khoản Gmail -> Advanced -> Go to project -> Allow).
+5. Copy đường link "URL ứng dụng web" (có dạng https://script.google.com/macros/s/.../exec).
+6. Mở file js/config.js và dán đường link đó vào dòng:
+   GOOGLE_SCRIPT_URL: 'https://script.google.com/macros/s/.../exec',
+
+================================================================================
+CÁCH ẨN / XÓA LỜI CHÚC NHẠY CẢM TRONG GOOGLE SHEETS:
+- Trong file Google Sheets của bạn sẽ tự động có 2 trang tính (tab ở dưới đáy):
+  1. "SoLuuBut": Chứa toàn bộ lời chúc. Nếu có câu nào bạn không muốn hiện lên web, bạn chỉ cần xóa dòng đó hoặc sửa cột D từ TRUE thành FALSE là trên web ẩn ngay lập tức!
+  2. "XacNhanThamDu": Thống kê toàn bộ khách bấm xác nhận đi / không đi và số người.
+================================================================================
+

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 320">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6b161e"/>
+      <stop offset="50%" stop-color="#511419"/>
+      <stop offset="100%" stop-color="#3c0c10"/>
+    </linearGradient>
+    <linearGradient id="flap" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#781a23"/>
+      <stop offset="100%" stop-color="#471015"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f6e099"/>
+      <stop offset="50%" stop-color="#c9a24a"/>
+      <stop offset="100%" stop-color="#96701e"/>
+    </linearGradient>
+  </defs>
+  <!-- Envelope body -->
+  <rect x="10" y="10" width="200" height="300" rx="14" fill="url(#bg)" stroke="url(#gold)" stroke-width="2.5"/>
+  <!-- Inner gold border -->
+  <rect x="20" y="20" width="180" height="280" rx="9" fill="none" stroke="url(#gold)" stroke-width="1" stroke-opacity="0.55"/>
+  <!-- Corner ornaments -->
+  <path d="M26 36 L26 26 L36 26 M184 26 L194 26 L194 36 M26 284 L26 294 L36 294 M184 294 L194 294 L194 284" fill="none" stroke="url(#gold)" stroke-width="1.8" stroke-linecap="round"/>
+  <!-- Top flap curve -->
+  <path d="M11 22 Q110 120 209 22" fill="url(#flap)" stroke="url(#gold)" stroke-width="2" stroke-opacity="0.85"/>
+  <!-- Gold wax seal / Double Happiness -->
+  <circle cx="110" cy="148" r="40" fill="url(#gold)"/>
+  <circle cx="110" cy="148" r="34" fill="none" stroke="#511419" stroke-width="1.5" stroke-opacity="0.85"/>
+  <text x="110" y="164" text-anchor="middle" font-size="44" font-family="serif" font-weight="bold" fill="#511419">囍</text>
+</svg>
+
