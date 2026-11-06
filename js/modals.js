@@ -29,17 +29,25 @@ window.__RED_ENVELOPE_SVG =
     </svg>
   `);
 
-window.copyBankInfo = function (accNum, btnEl) {
-  if (navigator.clipboard) {
+window.copyBankInfo = function (accNum, btnEl, qrUrl, fileName) {
+  if (navigator.clipboard && accNum) {
     navigator.clipboard.writeText(accNum).catch(() => {});
+  }
+  if (qrUrl) {
+    const link = document.createElement('a');
+    link.href = qrUrl;
+    link.download = fileName || 'qr-code.jpg';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   }
   const span = btnEl.querySelector('span');
   if (!span) return;
   const prev = span.textContent;
-  span.textContent = 'Đã sao chép STK';
+  span.textContent = 'Đã lưu QR & copy STK';
   setTimeout(() => {
     span.textContent = prev;
-  }, 1500);
+  }, 1800);
 };
 
 (function () {
