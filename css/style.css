@@ -277,4 +277,37 @@ header img,
   opacity: 0;
 }
 
+/* Hiệu ứng chữ Hỷ (囍) rơi xuống trên màn hình Overlay */
+@keyframes hyFall {
+  0% {
+    transform: translate3d(0, -10vh, 0) rotate(0deg);
+    opacity: 0;
+  }
+  12% {
+    opacity: var(--hy-opacity, 0.55);
+  }
+  85% {
+    opacity: var(--hy-opacity, 0.55);
+  }
+  100% {
+    transform: translate3d(var(--hy-drift, 35px), 110vh, 0) rotate(var(--hy-rot, 240deg));
+    opacity: 0;
+  }
+}
+
+.falling-hy-item {
+  position: absolute;
+  top: -40px;
+  user-select: none;
+  pointer-events: none;
+  color: #f3d98b;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+  font-family: serif;
+  font-weight: bold;
+  will-change: transform, opacity;
+  animation-name: hyFall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
 

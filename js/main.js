@@ -8,6 +8,33 @@
   const openInviteBtn = document.getElementById('open-invite-btn');
   const overlayGuestEl = document.getElementById('overlay-guest-name');
   const inlineGuestEl = document.getElementById('inline-guest-name');
+  const fallingHyContainer = document.getElementById('overlay-falling-hy');
+
+  // Khởi tạo các chữ Hỷ (囍) rơi xuống trên màn hình Overlay
+  if (fallingHyContainer) {
+    const count = window.innerWidth < 640 ? 18 : 26;
+    for (let i = 0; i < count; i++) {
+      const span = document.createElement('span');
+      span.className = 'falling-hy-item';
+      span.textContent = '囍';
+      const size = 13 + Math.random() * 14; // 13px -> 27px
+      const left = Math.random() * 100; // 0% -> 100%
+      const duration = 6 + Math.random() * 7; // 6s -> 13s
+      const delay = -Math.random() * 12; // Rơi sẵn ngay từ lúc mở trang
+      const drift = (Math.random() - 0.5) * 90; // Lắc nhẹ sang trái/phải
+      const rot = (Math.random() > 0.5 ? 1 : -1) * (120 + Math.random() * 200);
+      const opacity = 0.25 + Math.random() * 0.45;
+
+      span.style.left = `${left}%`;
+      span.style.fontSize = `${size.toFixed(1)}px`;
+      span.style.animationDuration = `${duration.toFixed(2)}s`;
+      span.style.animationDelay = `${delay.toFixed(2)}s`;
+      span.style.setProperty('--hy-drift', `${drift.toFixed(0)}px`);
+      span.style.setProperty('--hy-rot', `${rot.toFixed(0)}deg`);
+      span.style.setProperty('--hy-opacity', opacity.toFixed(2));
+      fallingHyContainer.appendChild(span);
+    }
+  }
 
   function getGuestNameFromUrl() {
     try {
