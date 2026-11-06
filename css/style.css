@@ -225,3 +225,52 @@
   border-radius: 9999px;
 }
 
+/* ==========================================================================
+   Anti-Save, Anti-Long-Press & Anti-Screenshot Protection (Mobile & Desktop)
+   ========================================================================== */
+
+/* Chặn nhấn giữ lưu ảnh trên iOS/Android và chặn kéo thả */
+img,
+.carousel-card,
+header {
+  -webkit-touch-callout: none !important;
+  -webkit-user-select: none !important;
+  user-select: none !important;
+  -webkit-user-drag: none !important;
+}
+
+/* Ngăn chạm trực tiếp vào thẻ <img> của ảnh cưới (trừ ảnh QR trong Hộp Quà Mừng) */
+header img,
+.carousel-card img,
+#lightbox-modal img {
+  pointer-events: none !important;
+  transition: filter 0.12s ease;
+}
+
+/* Đóng dấu chữ ký chìm (Watermark) nhẹ nhàng lên các thẻ ảnh trong Album */
+.carousel-card::after {
+  content: "Cao Bằng & Thanh Thúy • 17.11.2026";
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  pointer-events: none;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 12px;
+  font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.55);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.65);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.22) 0%, transparent 28%);
+}
+
+/* Làm mờ tức thì toàn bộ ảnh cưới khi phát hiện thao tác chụp màn hình / vuốt thanh điều khiển */
+body.photo-protected-blur header img,
+body.photo-protected-blur .carousel-card img,
+body.photo-protected-blur #lightbox-modal img {
+  filter: blur(26px) brightness(1.08) !important;
+}
+
+
