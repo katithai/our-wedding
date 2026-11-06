@@ -266,8 +266,7 @@ header img,
   background: linear-gradient(to top, rgba(0, 0, 0, 0.22) 0%, transparent 28%);
 }
 
-/* Làm mờ tức thì toàn bộ ảnh cưới khi phát hiện thao tác chụp màn hình / vuốt thanh điều khiển */
-body.photo-protected-blur header img,
+/* Làm mờ tức thì phần Album Ảnh khi phát hiện thao tác chụp màn hình / vuốt thanh điều khiển (không làm mờ phong bì trên cùng) */
 body.photo-protected-blur .carousel-card img,
 body.photo-protected-blur #lightbox-modal img {
   filter: blur(26px) brightness(1.08) !important;
