@@ -142,9 +142,7 @@
       e.stopPropagation();
       const idx = Number(card.dataset.index);
       if (idx === activeIndex) {
-        // Không mở ảnh phóng to toàn màn hình để chống chụp màn hình lấy ảnh gốc;
-        // bấm vào ảnh chính sẽ chuyển sang ảnh kế tiếp
-        goTo(activeIndex + 1);
+        openLightbox(idx);
       } else {
         goTo(idx);
       }

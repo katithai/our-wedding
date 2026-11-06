@@ -246,23 +246,4 @@ header img,
   pointer-events: none !important;
 }
 
-/* Đóng dấu chữ ký chìm (Watermark) nhẹ nhàng lên các thẻ ảnh trong Album */
-.carousel-card::after {
-  content: "Cao Bằng & Thanh Thúy • 17.11.2026";
-  position: absolute;
-  inset: 0;
-  z-index: 20;
-  pointer-events: none;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  padding-bottom: 12px;
-  font-family: 'Cormorant Garamond', 'Times New Roman', serif;
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  color: rgba(255, 255, 255, 0.55);
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.65);
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.22) 0%, transparent 28%);
-}
-
 
