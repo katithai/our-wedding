@@ -3,45 +3,241 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tạo Link Thiệp Cưới</title>
+    <title>Tạo Link Thiệp Cưới - Cao Bằng & Thanh Thúy</title>
     <style>
-        body { font-family: sans-serif; padding: 20px; max-width: 500px; margin: 0 auto; }
-        input, button { padding: 10px; margin-top: 10px; width: 100%; box-sizing: border-box; font-size: 15px; }
-        button { cursor: pointer; background: #511419; color: #ece4d8; border: none; border-radius: 6px; font-weight: bold; }
-        button:hover { opacity: 0.92; }
-        .result { margin-top: 20px; padding: 12px; background: #f7f3eb; border: 1px solid #d5c7b8; border-radius: 6px; word-break: break-all; }
+        * { box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            padding: 20px 16px;
+            max-width: 480px;
+            margin: 0 auto;
+            background-color: #fff7eb;
+            color: #511419;
+        }
+        .card {
+            background: #ffffff;
+            border: 1px solid rgba(81, 20, 25, 0.2);
+            border-radius: 14px;
+            padding: 22px 18px;
+            box-shadow: 0 8px 24px rgba(81, 20, 25, 0.08);
+        }
+        h2 {
+            margin: 0 0 6px;
+            font-size: 20px;
+            text-align: center;
+        }
+        .subtitle {
+            margin: 0 0 18px;
+            font-size: 13px;
+            text-align: center;
+            opacity: 0.75;
+        }
+        .input-wrap {
+            position: relative;
+        }
+        input {
+            padding: 13px 40px 13px 14px;
+            width: 100%;
+            font-size: 16px; /* 16px chống tự động zoom trên iPhone */
+            border: 1.5px solid rgba(81, 20, 25, 0.35);
+            border-radius: 10px;
+            outline: none;
+            color: #511419;
+        }
+        input:focus {
+            border-color: #511419;
+        }
+        .clear-btn {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            font-size: 18px;
+            color: #511419;
+            opacity: 0.5;
+            padding: 6px 8px;
+            cursor: pointer;
+            width: auto;
+            margin: 0;
+        }
+        .btn-primary {
+            padding: 13px;
+            margin-top: 12px;
+            width: 100%;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            background: #511419;
+            color: #ece4d8;
+            border: none;
+            border-radius: 10px;
+            transition: transform 0.15s ease, opacity 0.15s ease;
+        }
+        .btn-primary:active {
+            transform: scale(0.98);
+        }
+        .result {
+            margin-top: 18px;
+            padding: 14px;
+            background: #faf3e8;
+            border: 1px solid rgba(81, 20, 25, 0.22);
+            border-radius: 10px;
+            word-break: break-all;
+        }
+        .preview-name {
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .link-box {
+            display: block;
+            padding: 10px;
+            background: #ffffff;
+            border: 1px dashed rgba(81, 20, 25, 0.3);
+            border-radius: 8px;
+            font-size: 13px;
+            color: #511419;
+            text-decoration: none;
+            margin-bottom: 12px;
+        }
+        .action-row {
+            display: flex;
+            gap: 10px;
+        }
+        .btn-copy {
+            flex: 2;
+            padding: 12px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            background: #1f7a3f;
+            color: #ffffff;
+            border: none;
+            border-radius: 9px;
+        }
+        .btn-copy.copied {
+            background: #14532d;
+        }
+        .btn-open {
+            flex: 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            background: #ece4d8;
+            color: #511419;
+            text-decoration: none;
+            border-radius: 9px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
-    <h2>Tạo Link Khách Mời</h2>
-    <input type="text" id="guestName" placeholder="Nhập tên khách mời (vd: Gia đình chú Tư)...">
-    <button onclick="generateLink()">Tạo Link</button>
-    
-    <div class="result" id="resultContainer" style="display: none;">
-        <strong>Link của bạn:</strong><br><br>
-        <a id="resultLink" href="#" target="_blank"></a>
+    <div class="card">
+        <h2>Tạo Link Khách Mời</h2>
+        <p class="subtitle">Thiệp cưới Cao Bằng &amp; Thanh Thúy</p>
+
+        <div class="input-wrap">
+            <input type="text" id="guestName" placeholder="Nhập tên khách mời (vd: Gia đình chú Tư)..." autocomplete="off">
+            <button type="button" class="clear-btn" onclick="clearInput()" title="Xóa nhanh">✕</button>
+        </div>
+
+        <button type="button" class="btn-primary" onclick="generateLink()">Tạo Link Mời</button>
+        
+        <div class="result" id="resultContainer" style="display: none;">
+            <div class="preview-name">Khách mời: <strong id="previewGuest"></strong></div>
+            <a id="resultLink" class="link-box" href="#" target="_blank"></a>
+            <div class="action-row">
+                <button type="button" id="copyBtn" class="btn-copy" onclick="copyLink()">📋 Sao chép Link</button>
+                <a id="openLinkBtn" class="btn-open" href="#" target="_blank">Xem thử ↗</a>
+            </div>
+        </div>
     </div>
 
     <script>
+        let currentGeneratedUrl = "";
+
+        const inputEl = document.getElementById('guestName');
+        inputEl.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                generateLink();
+            }
+        });
+
+        function clearInput() {
+            inputEl.value = '';
+            document.getElementById('resultContainer').style.display = 'none';
+            inputEl.focus();
+        }
+
         function generateLink() {
-            const name = document.getElementById('guestName').value.trim();
-            if (!name) return alert("Vui lòng nhập tên!");
+            const name = inputEl.value.trim();
+            if (!name) return alert("Vui lòng nhập tên khách mời!");
 
             // Xử lý mã hóa Base64 an toàn cho Tiếng Việt (UTF-8)
             const utf8Bytes = new TextEncoder().encode(name);
             const base64Str = btoa(String.fromCodePoint(...utf8Bytes));
 
-            // Ghép vào URL (dùng encodeURIComponent để giữ nguyên dấu + và = trên URL)
+            // Ghép vào URL
             const baseUrl = "https://katithai.github.io/our-wedding/?id=";
-            const finalUrl = baseUrl + encodeURIComponent(base64Str);
+            currentGeneratedUrl = baseUrl + encodeURIComponent(base64Str);
 
             // Hiển thị kết quả
+            document.getElementById('previewGuest').textContent = name;
             const linkElement = document.getElementById('resultLink');
-            linkElement.href = finalUrl;
-            linkElement.textContent = finalUrl;
+            linkElement.href = currentGeneratedUrl;
+            linkElement.textContent = currentGeneratedUrl;
+
+            document.getElementById('openLinkBtn').href = currentGeneratedUrl;
             document.getElementById('resultContainer').style.display = 'block';
+
+            const copyBtn = document.getElementById('copyBtn');
+            copyBtn.textContent = "📋 Sao chép Link";
+            copyBtn.classList.remove('copied');
+        }
+
+        function copyLink() {
+            if (!currentGeneratedUrl) return;
+            const copyBtn = document.getElementById('copyBtn');
+
+            function showCopiedState() {
+                copyBtn.textContent = "✅ Đã sao chép!";
+                copyBtn.classList.add('copied');
+                setTimeout(() => {
+                    copyBtn.textContent = "📋 Sao chép Link";
+                    copyBtn.classList.remove('copied');
+                }, 2000);
+            }
+
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(currentGeneratedUrl).then(showCopiedState).catch(() => {
+                    fallbackCopy(currentGeneratedUrl, showCopiedState);
+                });
+            } else {
+                fallbackCopy(currentGeneratedUrl, showCopiedState);
+            }
+        }
+
+        function fallbackCopy(text, callback) {
+            const temp = document.createElement('textarea');
+            temp.value = text;
+            temp.style.position = 'fixed';
+            temp.style.opacity = '0';
+            document.body.appendChild(temp);
+            temp.focus();
+            temp.select();
+            try {
+                document.execCommand('copy');
+                callback();
+            } catch (e) {
+                alert("Không thể tự copy, bạn hãy nhấn giữ vào đường link để sao chép nhé!");
+            }
+            document.body.removeChild(temp);
         }
     </script>
 </body>
 </html>
-
