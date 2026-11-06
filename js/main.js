@@ -3,6 +3,15 @@
    ========================================================================== */
 
 (function () {
+  // Luôn đưa trang về trên cùng mỗi khi F5 / tải lại trang
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+  window.scrollTo(0, 0);
+  window.addEventListener('beforeunload', () => {
+    window.scrollTo(0, 0);
+  });
+
   // ---------------- 0. ĐỌC TÊN KHÁCH MỜI TỪ URL & MÀN HÌNH OVERLAY ----------------
   const overlay = document.getElementById('welcome-overlay');
   const openInviteBtn = document.getElementById('open-invite-btn');
@@ -125,6 +134,10 @@
     if (e) e.stopPropagation();
     if (!isOverlayOpen) return;
     isOverlayOpen = false;
+
+    // Đảm bảo thư chính luôn bắt đầu từ vị trí trên cùng khi mở thiệp
+    window.scrollTo(0, 0);
+    scrollAccumulator = 0;
 
     // Bật nhạc ngay khi bấm "Mở Thiệp"
     tryPlayMusic();
