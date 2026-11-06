@@ -123,87 +123,14 @@
     isAutoScrolling = !isAutoScrolling;
   });
 
-  // ---------------- 3. BẢO VỆ ẢNH CƯỚI (CHỐNG LƯU & CHỤP MÀN HÌNH) ----------------
-  let blurRecoverTimer = null;
-
-  function triggerPhotoBlur(durationMs = 2200) {
-    document.body.classList.add('photo-protected-blur');
-    clearTimeout(blurRecoverTimer);
-    if (durationMs > 0) {
-      blurRecoverTimer = setTimeout(() => {
-        if (document.hasFocus() && !document.hidden) {
-          document.body.classList.remove('photo-protected-blur');
-        }
-      }, durationMs);
-    }
-  }
-
-  // 1. Chặn menu chuột phải & nhấn giữ lưu ảnh trên điện thoại (trừ trong Hộp Quà Mừng)
+  // ---------------- 3. CHẶN NHẤN GIỮ LƯU ẢNH & CHUỘT PHẢI ----------------
   document.addEventListener('contextmenu', (e) => {
     if (e.target.closest('#gift-modal')) return;
     e.preventDefault();
   });
 
-  // 2. Chặn kéo thả ảnh
   document.addEventListener('dragstart', (e) => {
     e.preventDefault();
-  });
-
-  // 3. Chặn thao tác vuốt 2-3 ngón tay chụp màn hình trên điện thoại Android/iOS
-  document.addEventListener(
-    'touchstart',
-    (e) => {
-      if (e.touches && e.touches.length >= 2) {
-        triggerPhotoBlur(2500);
-      }
-    },
-    { passive: true }
-  );
-
-  // 4. Làm mờ ảnh ngay khi vuốt thanh Trung tâm điều khiển (Control Center) hoặc chuyển ứng dụng
-  window.addEventListener('blur', () => {
-    triggerPhotoBlur(0);
-  });
-
-  window.addEventListener('focus', () => {
-    clearTimeout(blurRecoverTimer);
-    blurRecoverTimer = setTimeout(() => {
-      document.body.classList.remove('photo-protected-blur');
-    }, 300);
-  });
-
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) {
-      triggerPhotoBlur(0);
-    } else {
-      clearTimeout(blurRecoverTimer);
-      blurRecoverTimer = setTimeout(() => {
-        document.body.classList.remove('photo-protected-blur');
-      }, 300);
-    }
-  });
-
-  // 5. Chặn phím chụp màn hình (PrintScreen, Cmd+Shift+3/4/5) & phím tắt lưu trang trên máy tính
-  window.addEventListener('keyup', (e) => {
-    if (e.key === 'PrintScreen' || e.keyCode === 44) {
-      triggerPhotoBlur(3000);
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText('').catch(() => {});
-      }
-    }
-  });
-
-  window.addEventListener('keydown', (e) => {
-    if (
-      e.key === 'PrintScreen' ||
-      (e.metaKey && e.shiftKey && ['3', '4', '5', 's', 'S'].includes(e.key)) ||
-      (e.ctrlKey && e.shiftKey && ['s', 'S', 'i', 'I', 'j', 'J', 'c', 'C'].includes(e.key)) ||
-      (e.ctrlKey && ['s', 'S', 'u', 'U', 'p', 'P'].includes(e.key)) ||
-      e.key === 'F12'
-    ) {
-      triggerPhotoBlur(3000);
-      e.preventDefault();
-    }
   });
 })();
 

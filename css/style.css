@@ -244,7 +244,6 @@ header img,
 .carousel-card img,
 #lightbox-modal img {
   pointer-events: none !important;
-  transition: filter 0.12s ease;
 }
 
 /* Đóng dấu chữ ký chìm (Watermark) nhẹ nhàng lên các thẻ ảnh trong Album */
@@ -264,12 +263,6 @@ header img,
   color: rgba(255, 255, 255, 0.55);
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.65);
   background: linear-gradient(to top, rgba(0, 0, 0, 0.22) 0%, transparent 28%);
-}
-
-/* Làm mờ tức thì phần Album Ảnh khi phát hiện thao tác chụp màn hình / vuốt thanh điều khiển (không làm mờ phong bì trên cùng) */
-body.photo-protected-blur .carousel-card img,
-body.photo-protected-blur #lightbox-modal img {
-  filter: blur(26px) brightness(1.08) !important;
 }
 
 
