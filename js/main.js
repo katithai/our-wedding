@@ -117,11 +117,9 @@
     }, 550);
   }
 
+  // Chỉ mở thiệp khi bấm đúng vào nút "Mở Thiệp"
   if (openInviteBtn) {
     openInviteBtn.addEventListener('click', openInvitationOverlay);
-  }
-  if (overlay) {
-    overlay.addEventListener('click', openInvitationOverlay);
   }
 
   function isAnyModalOpen() {

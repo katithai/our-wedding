@@ -44,16 +44,24 @@
   <script src="https://cdn.tailwindcss.com"></script>
 
   <!-- Custom Stylesheet -->
-  <link rel="stylesheet" href="css/style.css?v=3">
+  <link rel="stylesheet" href="css/style.css?v=4">
 </head>
 
 <body class="font-sans antialiased bg-white overflow-hidden">
   <!-- ================= MÀN HÌNH OVERLAY BÌA THIỆP MỞ ĐẦU ================= -->
   <div id="welcome-overlay"
     class="fixed inset-0 z-[9999] flex items-center justify-center px-4 py-6 transition-all duration-700 ease-out"
-    style="background-color: rgba(45, 9, 12, 0.92); backdrop-filter: blur(6px);">
+    style="background-color: rgb(255, 247, 235);">
+    <!-- Nền giấy kem đặc hoàn toàn che kín 100% phía sau -->
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0"
+      style="background-image: url('images/icon/paper.webp'); background-size: 100% auto; background-position: center top; mix-blend-mode: multiply; opacity: 0.55;">
+    </div>
+    <img alt="" aria-hidden="true"
+      class="pointer-events-none absolute left-1/2 top-1/2 w-[130%] max-w-[750px] -translate-x-1/2 -translate-y-1/2 object-contain opacity-[0.08]"
+      src="images/decor/castle-background.webp">
+
     <div
-      class="welcome-card relative w-full max-w-[390px] md:max-w-[450px] overflow-hidden rounded-[18px] px-6 py-10 md:px-9 md:py-12 text-center shadow-[0_20px_60px_rgba(0,0,0,0.65)]"
+      class="welcome-card relative z-10 w-full max-w-[390px] md:max-w-[450px] overflow-hidden rounded-[18px] px-6 py-10 md:px-9 md:py-12 text-center shadow-[0_20px_60px_rgba(81,20,25,0.45)]"
       style="background-color: rgb(81, 20, 25); color: rgb(236, 228, 216); border: 1px solid rgba(236, 228, 216, 0.3);">
       <!-- Nền giấy mỹ thuật & lâu đài chìm -->
       <img alt="" aria-hidden="true"
@@ -1222,11 +1230,11 @@
   </div>
 
   <!-- Application Scripts -->
-  <script src="js/config.js?v=3"></script>
-  <script src="js/modals.js?v=3"></script>
-  <script src="js/carousel.js?v=3"></script>
-  <script src="js/guestbook.js?v=3"></script>
-  <script src="js/main.js?v=3"></script>
+  <script src="js/config.js?v=4"></script>
+  <script src="js/modals.js?v=4"></script>
+  <script src="js/carousel.js?v=4"></script>
+  <script src="js/guestbook.js?v=4"></script>
+  <script src="js/main.js?v=4"></script>
 </body>
 
 </html>
