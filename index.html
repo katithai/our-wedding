@@ -44,10 +44,97 @@
   <script src="https://cdn.tailwindcss.com"></script>
 
   <!-- Custom Stylesheet -->
-  <link rel="stylesheet" href="css/style.css?v=2">
+  <link rel="stylesheet" href="css/style.css?v=3">
 </head>
 
-<body class="font-sans antialiased bg-white">
+<body class="font-sans antialiased bg-white overflow-hidden">
+  <!-- ================= MÀN HÌNH OVERLAY BÌA THIỆP MỞ ĐẦU ================= -->
+  <div id="welcome-overlay"
+    class="fixed inset-0 z-[9999] flex items-center justify-center px-4 py-6 transition-all duration-700 ease-out"
+    style="background-color: rgba(45, 9, 12, 0.92); backdrop-filter: blur(6px);">
+    <div
+      class="welcome-card relative w-full max-w-[390px] md:max-w-[450px] overflow-hidden rounded-[18px] px-6 py-10 md:px-9 md:py-12 text-center shadow-[0_20px_60px_rgba(0,0,0,0.65)]"
+      style="background-color: rgb(81, 20, 25); color: rgb(236, 228, 216); border: 1px solid rgba(236, 228, 216, 0.3);">
+      <!-- Nền giấy mỹ thuật & lâu đài chìm -->
+      <img alt="" aria-hidden="true"
+        class="pointer-events-none absolute inset-0 size-full max-w-none object-cover mix-blend-multiply opacity-45"
+        src="images/icon/paper.webp">
+      <img alt="" aria-hidden="true"
+        class="pointer-events-none absolute left-1/2 top-1/2 w-[145%] max-w-none -translate-x-1/2 -translate-y-1/2 object-contain opacity-[0.07]"
+        src="images/decor/castle-background.webp">
+
+      <!-- Khung viền kẻ chỉ vàng kem bên trong -->
+      <div aria-hidden="true" class="pointer-events-none absolute inset-3 rounded-[12px]"
+        style="border: 1px solid rgba(236, 228, 216, 0.28);"></div>
+
+      <!-- Hoa trang trí góc -->
+      <span aria-hidden="true" class="pointer-events-none absolute -right-8 -top-6 w-28 opacity-90">
+        <img alt="" class="w-full object-contain drop-shadow-md rotate-[15deg]" src="images/decor/flower2-decoration.webp">
+      </span>
+      <span aria-hidden="true" class="pointer-events-none absolute -left-8 -bottom-6 w-28 opacity-90">
+        <img alt="" class="w-full object-contain drop-shadow-md rotate-[-165deg]" src="images/decor/flower2-decoration.webp">
+      </span>
+
+      <div class="relative z-10 flex flex-col items-center">
+        <p class="text-[11px] md:text-[12px] uppercase tracking-[0.25em] opacity-80"
+          style="font-family: 'Cormorant Garamond', 'Times New Roman', serif;">
+          Thiệp Mời Cưới • 17.11.2026
+        </p>
+
+        <!-- Tên Cô Dâu Chú Rể -->
+        <div class="mt-4 flex flex-col items-center gap-1">
+          <h1 class="text-[36px] md:text-[44px] leading-tight"
+            style="font-family: 'Viaoda Libre', 'The Nautigal', cursive; color: rgb(236, 228, 216);">
+            Cao Bằng
+          </h1>
+          <span class="text-[22px] leading-none opacity-75" style="font-family: 'Ms Madi', cursive;">&amp;</span>
+          <h1 class="text-[36px] md:text-[44px] leading-tight"
+            style="font-family: 'Viaoda Libre', 'The Nautigal', cursive; color: rgb(236, 228, 216);">
+            Thanh Thúy
+          </h1>
+        </div>
+
+        <!-- Đường kẻ hoa văn -->
+        <div class="my-5 flex items-center justify-center gap-3 w-3/4 opacity-60">
+          <span class="h-px flex-1" style="background-color: rgba(236, 228, 216, 0.5);"></span>
+          <span class="text-xs">❦</span>
+          <span class="h-px flex-1" style="background-color: rgba(236, 228, 216, 0.5);"></span>
+        </div>
+
+        <p class="text-[12px] md:text-[13px] uppercase tracking-[0.18em] opacity-85"
+          style="font-family: Baskerville, 'Libre Baskerville', 'Times New Roman', serif;">
+          Trân trọng kính mời
+        </p>
+
+        <!-- TÊN KHÁCH MỜI ĐƯỢC THAY ĐỔI ĐỘNG TỪ LINK URL -->
+        <div class="mt-2.5 mb-2 w-full px-3">
+          <p id="overlay-guest-name"
+            class="inline-block min-w-[200px] max-w-full break-words border-b pb-1.5 text-[22px] md:text-[26px] font-semibold tracking-wide"
+            style="font-family: 'Cormorant Garamond', 'Times New Roman', serif; color: #f7e3b5; border-color: rgba(247, 227, 181, 0.45);">
+            Quý Khách
+          </p>
+        </div>
+
+        <p class="mt-1 max-w-[270px] text-[12px] md:text-[13px] leading-relaxed opacity-80"
+          style="font-family: Baskerville, 'Libre Baskerville', 'Times New Roman', serif;">
+          Tới dự bữa cơm thân mật chung vui cùng gia đình chúng tôi
+        </p>
+
+        <!-- Nút Mở Thiệp -->
+        <button id="open-invite-btn" type="button"
+          class="mt-7 inline-flex items-center gap-2.5 rounded-full px-8 py-3 text-[13px] md:text-[14px] font-semibold uppercase tracking-[0.16em] shadow-lg transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
+          style="background-color: rgb(236, 228, 216); color: rgb(81, 20, 25); font-family: Baskerville, 'Libre Baskerville', 'Times New Roman', serif;">
+          <span>Mở Thiệp</span>
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 22">
+            <path
+              d="M12 21C12 21 1.5 13.5 1.5 7.5C1.5 4.46 3.96 2 7 2C8.76 2 10.35 2.81 11.4 4.09L12 4.8L12.6 4.09C13.65 2.81 15.24 2 17 2C20.04 2 22.5 4.46 22.5 7.5C22.5 13.5 12 21 12 21Z">
+            </path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
   <div class="demo-page">
     <!-- Background Audio (Local file: audio/music.mp3) -->
     <audio id="bg-music" style="display:none" loop preload="auto" src="audio/music.mp3"></audio>
@@ -371,12 +458,19 @@
                     <div class="flex flex-col items-center gap-4 md:gap-5 text-center"
                       data-landing-screenshot-id="invite-reception"
                       style="font-family: Baskerville, 'Libre Baskerville', 'Times New Roman', serif; color: rgb(236, 228, 216);">
-                      <h3
-                        class="font-normal uppercase text-[14px] md:text-[18px] flex flex-col items-center leading-relaxed"
-                        style="color: rgb(236, 228, 216); font-family: Baskerville, 'Libre Baskerville', 'Times New Roman', serif; text-transform: uppercase;">
-                        <span dir="auto">Trân trọng kính mời tới dự bữa cơm thân mật<br>chung vui cùng gia đình chúng
-                          tôi</span>
-                      </h3>
+                      <div class="flex flex-col items-center gap-2">
+                        <span class="uppercase text-[13px] md:text-[15px] tracking-[0.14em] opacity-85">Trân trọng kính mời</span>
+                        <span id="inline-guest-name"
+                          class="inline-block min-w-[180px] border-b border-dotted px-4 pb-1 text-[18px] md:text-[22px] font-semibold"
+                          style="font-family: 'Cormorant Garamond', 'Times New Roman', serif; color: #f7e3b5; border-color: rgba(236, 228, 216, 0.5);">
+                          Quý Khách
+                        </span>
+                        <h3
+                          class="mt-1 font-normal uppercase text-[13px] md:text-[16px] flex flex-col items-center leading-relaxed opacity-90"
+                          style="color: rgb(236, 228, 216); font-family: Baskerville, 'Libre Baskerville', 'Times New Roman', serif; text-transform: uppercase;">
+                          <span dir="auto">Tới dự bữa cơm thân mật<br>chung vui cùng gia đình chúng tôi</span>
+                        </h3>
+                      </div>
 
                       <div
                         class="flex w-full max-w-[130px] items-center justify-center px-0 text-[13px] md:text-[15px] uppercase whitespace-nowrap min-w-max gap-x-3"
@@ -1128,11 +1222,11 @@
   </div>
 
   <!-- Application Scripts -->
-  <script src="js/config.js?v=2"></script>
-  <script src="js/modals.js?v=2"></script>
-  <script src="js/carousel.js?v=2"></script>
-  <script src="js/guestbook.js?v=2"></script>
-  <script src="js/main.js?v=2"></script>
+  <script src="js/config.js?v=3"></script>
+  <script src="js/modals.js?v=3"></script>
+  <script src="js/carousel.js?v=3"></script>
+  <script src="js/guestbook.js?v=3"></script>
+  <script src="js/main.js?v=3"></script>
 </body>
 
 </html>
