@@ -45,36 +45,48 @@
     }
   }
 
-  function getGuestNameFromUrl() {
+  // Mặc định hiển thị "Quý Khách" trước
+  const DEFAULT_GUEST_NAME = 'Quý Khách';
+  if (overlayGuestEl) overlayGuestEl.textContent = DEFAULT_GUEST_NAME;
+  if (inlineGuestEl) inlineGuestEl.textContent = DEFAULT_GUEST_NAME;
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const encodedId = urlParams.get('id');
+
+  if (encodedId) {
     try {
-      const params = new URLSearchParams(window.location.search);
-      const raw =
-        params.get('to') ||
-        params.get('khach') ||
-        params.get('name') ||
-        params.get('k') ||
-        '';
-      return raw.trim();
+      // Kiểm tra chặt: nếu chuỗi Base64 bị thiếu dù chỉ 1 ký tự (không chia hết cho 4) hoặc sai định dạng -> báo lỗi ngay
+      if (
+        encodedId.length % 4 !== 0 ||
+        !/^[A-Za-z0-9+/]+={0,2}$/.test(encodedId)
+      ) {
+        throw new Error('Mã ID bị thiếu ký tự');
+      }
+
+      // Giải mã Base64 tiếng Việt (fatal: true bắt lỗi ngay nếu byte UTF-8 bị hỏng)
+      const binary = atob(encodedId);
+      const bytes = Uint8Array.from(binary, (char) => char.charCodeAt(0));
+      const guestName = new TextDecoder('utf-8', { fatal: true })
+        .decode(bytes)
+        .trim();
+
+      // Giải mã thành công mới gán tên
+      if (guestName) {
+        if (overlayGuestEl) overlayGuestEl.textContent = guestName;
+        if (inlineGuestEl) inlineGuestEl.textContent = guestName;
+
+        const guestbookNameInput = document.getElementById('guest-name');
+        if (guestbookNameInput && !guestbookNameInput.value) {
+          guestbookNameInput.value = guestName;
+        }
+        const rsvpNameInput = document.querySelector('#rsvp-form input[type="text"]');
+        if (rsvpNameInput && !rsvpNameInput.value) {
+          rsvpNameInput.value = guestName;
+        }
+      }
     } catch (e) {
-      return '';
-    }
-  }
-
-  const customGuestName = getGuestNameFromUrl();
-  const displayGuestName = customGuestName || 'Quý Khách';
-
-  if (overlayGuestEl) overlayGuestEl.textContent = displayGuestName;
-  if (inlineGuestEl) inlineGuestEl.textContent = displayGuestName;
-
-  // Tự động điền sẵn tên khách vào ô Sổ Lưu Bút & Xác nhận tham dự nếu có tên riêng trên link
-  if (customGuestName) {
-    const guestbookNameInput = document.getElementById('guest-name');
-    if (guestbookNameInput && !guestbookNameInput.value) {
-      guestbookNameInput.value = customGuestName;
-    }
-    const rsvpNameInput = document.querySelector('#rsvp-form input[type="text"]');
-    if (rsvpNameInput && !rsvpNameInput.value) {
-      rsvpNameInput.value = customGuestName;
+      // Nếu mã sai hoặc thiếu ký tự -> giữ nguyên mặc định "Quý Khách"
+      console.error('Mã ID không hợp lệ');
     }
   }
 

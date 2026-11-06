@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tạo Link Thiệp Cưới</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; max-width: 500px; margin: 0 auto; }
+        input, button { padding: 10px; margin-top: 10px; width: 100%; box-sizing: border-box; font-size: 15px; }
+        button { cursor: pointer; background: #511419; color: #ece4d8; border: none; border-radius: 6px; font-weight: bold; }
+        button:hover { opacity: 0.92; }
+        .result { margin-top: 20px; padding: 12px; background: #f7f3eb; border: 1px solid #d5c7b8; border-radius: 6px; word-break: break-all; }
+    </style>
+</head>
+<body>
+    <h2>Tạo Link Khách Mời</h2>
+    <input type="text" id="guestName" placeholder="Nhập tên khách mời (vd: Gia đình chú Tư)...">
+    <button onclick="generateLink()">Tạo Link</button>
+    
+    <div class="result" id="resultContainer" style="display: none;">
+        <strong>Link của bạn:</strong><br><br>
+        <a id="resultLink" href="#" target="_blank"></a>
+    </div>
+
+    <script>
+        function generateLink() {
+            const name = document.getElementById('guestName').value.trim();
+            if (!name) return alert("Vui lòng nhập tên!");
+
+            // Xử lý mã hóa Base64 an toàn cho Tiếng Việt (UTF-8)
+            const utf8Bytes = new TextEncoder().encode(name);
+            const base64Str = btoa(String.fromCodePoint(...utf8Bytes));
+
+            // Ghép vào URL (dùng encodeURIComponent để giữ nguyên dấu + và = trên URL)
+            const baseUrl = "https://katithai.github.io/our-wedding/?id=";
+            const finalUrl = baseUrl + encodeURIComponent(base64Str);
+
+            // Hiển thị kết quả
+            const linkElement = document.getElementById('resultLink');
+            linkElement.href = finalUrl;
+            linkElement.textContent = finalUrl;
+            document.getElementById('resultContainer').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
+
