@@ -42,7 +42,7 @@
 
   // ---------------- GỢI Ý LỜI CHÚC BẰNG AI (🪄) ----------------
   const sampleWishes = [
-    'Chúc Hoàng Long và Bảo Ngọc trăm năm hạnh phúc, trọn vẹn yêu thương!',
+    'Chúc Cao Bằng và Thanh Thúy trăm năm hạnh phúc, trọn vẹn yêu thương!',
     'Chúc mừng ngày trọng đại của hai bạn! Chúc gia đình nhỏ luôn ngập tràn tiếng cười.',
     'Chúc hai bạn răng long đầu bạc, mãi mãi bên nhau hạnh phúc viên mãn!',
     'Đẹp đôi quá! Chúc cô dâu chú rể trăm năm tình viên mãn, bạc đầu nghĩa phu thê!',
