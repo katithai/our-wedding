@@ -141,9 +141,7 @@
     card.addEventListener('click', (e) => {
       e.stopPropagation();
       const idx = Number(card.dataset.index);
-      if (idx === activeIndex) {
-        openLightbox(idx);
-      } else {
+      if (idx !== activeIndex) {
         goTo(idx);
       }
     });
