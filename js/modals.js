@@ -3,32 +3,6 @@
    - Kết nối biểu mẫu Xác nhận tham dự (RSVP) với Google Sheets & Bộ lọc từ cấm
    ========================================================================== */
 
-// Hình ảnh SVG dự phòng cho phong bì lì xì đỏ trong mục Hộp Quà Mừng
-window.__RED_ENVELOPE_SVG =
-  'data:image/svg+xml;utf8,' +
-  encodeURIComponent(`
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 320">
-      <defs>
-        <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#6b161e"/>
-          <stop offset="50%" stop-color="#511419"/>
-          <stop offset="100%" stop-color="#3c0c10"/>
-        </linearGradient>
-        <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#f3d98b"/>
-          <stop offset="50%" stop-color="#c9a24a"/>
-          <stop offset="100%" stop-color="#9a7422"/>
-        </linearGradient>
-      </defs>
-      <rect x="10" y="10" width="200" height="300" rx="14" fill="url(#bg)" stroke="url(#gold)" stroke-width="2.5"/>
-      <rect x="20" y="20" width="180" height="280" rx="9" fill="none" stroke="url(#gold)" stroke-width="1" stroke-opacity="0.5"/>
-      <path d="M10 24 Q110 115 210 24" fill="none" stroke="url(#gold)" stroke-width="2" stroke-opacity="0.75"/>
-      <circle cx="110" cy="145" r="38" fill="url(#gold)"/>
-      <circle cx="110" cy="145" r="33" fill="none" stroke="#511419" stroke-width="1.5"/>
-      <text x="110" y="160" text-anchor="middle" font-size="42" font-family="serif" font-weight="bold" fill="#511419">囍</text>
-    </svg>
-  `);
-
 window.copyBankInfo = function (accNum, btnEl, qrUrl, fileName) {
   if (navigator.clipboard && accNum) {
     navigator.clipboard.writeText(accNum).catch(() => {});

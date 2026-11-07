@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Vòng xoay Album Ảnh 3D (3D Photo Carousel) & Hộp thoại xem ảnh (Lightbox)
+   Vòng xoay Album Ảnh 3D (3D Photo Carousel)
    ========================================================================== */
 
 (function () {
@@ -99,7 +99,6 @@
   function startAutoPlay() {
     stopAutoPlay();
     autoPlayTimer = setInterval(() => {
-      if (lightboxModal && lightboxModal.open) return;
       activeIndex = (activeIndex + 1) % total;
       updateCarousel();
     }, AUTO_SLIDE_INTERVAL_MS);
@@ -160,66 +159,6 @@
       else goTo(activeIndex - 1);
     }
   }, { passive: true });
-
-  // Hộp thoại xem ảnh phóng to (Lightbox Modal)
-  const lightboxModal = document.getElementById('lightbox-modal');
-  const lightboxMainImg = document.getElementById('lightbox-main-img');
-  const lightboxCounter = document.getElementById('lightbox-counter');
-  const lightboxThumbs = Array.from(document.querySelectorAll('#lightbox-thumbs button'));
-  const lightboxPrev = document.getElementById('lightbox-prev');
-  const lightboxNext = document.getElementById('lightbox-next');
-  let lightboxIndex = 0;
-
-  function updateLightbox() {
-    if (lightboxCounter) {
-      lightboxCounter.textContent = `${lightboxIndex + 1} / ${total}`;
-    }
-    if (lightboxMainImg && cards[lightboxIndex]) {
-      const cardImg = cards[lightboxIndex].querySelector('img');
-      if (cardImg) lightboxMainImg.src = cardImg.src;
-    }
-    lightboxThumbs.forEach((btn, idx) => {
-      if (idx === lightboxIndex) {
-        btn.className = 'flex-shrink-0 h-12 w-12 sm:h-16 sm:w-16 rounded-md sm:rounded-lg overflow-hidden transition-all duration-200 scale-105 shadow-lg';
-        btn.style.outline = 'rgb(81, 20, 25) solid 2px';
-        btn.style.outlineOffset = '2px';
-      } else {
-        btn.className = 'flex-shrink-0 h-12 w-12 sm:h-16 sm:w-16 rounded-md sm:rounded-lg overflow-hidden transition-all duration-200 opacity-60 hover:opacity-100';
-        btn.style.outline = 'none';
-      }
-    });
-  }
-
-  function openLightbox(idx) {
-    if (!lightboxModal) return;
-    lightboxIndex = idx;
-    updateLightbox();
-    lightboxModal.showModal();
-  }
-
-  if (lightboxPrev) {
-    lightboxPrev.addEventListener('click', (e) => {
-      e.stopPropagation();
-      lightboxIndex = (lightboxIndex - 1 + total) % total;
-      updateLightbox();
-    });
-  }
-
-  if (lightboxNext) {
-    lightboxNext.addEventListener('click', (e) => {
-      e.stopPropagation();
-      lightboxIndex = (lightboxIndex + 1) % total;
-      updateLightbox();
-    });
-  }
-
-  lightboxThumbs.forEach((btn) => {
-    btn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      lightboxIndex = Number(btn.dataset.thumb);
-      updateLightbox();
-    });
-  });
 
   updateCarousel();
   startAutoPlay();

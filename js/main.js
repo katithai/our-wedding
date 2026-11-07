@@ -95,7 +95,6 @@
   const audio = document.getElementById('bg-music');
   const musicBtn = document.getElementById('music-toggle-btn');
   const musicDisc = document.getElementById('music-disc');
-  let musicStartedOnce = false;
 
   function setMusicVisualState(playing) {
     if (!musicDisc) return;
@@ -111,7 +110,6 @@
     audio
       .play()
       .then(() => {
-        musicStartedOnce = true;
         setMusicVisualState(true);
       })
       .catch(() => {
@@ -127,7 +125,6 @@
   if (musicBtn && audio) {
     musicBtn.addEventListener('click', (e) => {
       e.stopPropagation();
-      musicStartedOnce = true;
       if (audio.paused) {
         audio.play().catch(() => {});
       } else {

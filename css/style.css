@@ -241,8 +241,7 @@ header {
 
 /* Ngăn chạm trực tiếp vào thẻ <img> của ảnh cưới (trừ ảnh QR trong Hộp Quà Mừng) */
 header img,
-.carousel-card img,
-#lightbox-modal img {
+.carousel-card img {
   pointer-events: none !important;
 }
 
