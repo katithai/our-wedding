@@ -1,5 +1,5 @@
 /* ==========================================================================
-   3D Photo Album Carousel & Fullscreen Lightbox
+   Vòng xoay Album Ảnh 3D (3D Photo Carousel) & Hộp thoại xem ảnh (Lightbox)
    ========================================================================== */
 
 (function () {
@@ -12,7 +12,7 @@
   if (!cards.length || !viewport) return;
 
   const total = cards.length;
-  let activeIndex = 3; // Default center card (photo 4)
+  let activeIndex = 3; // Mặc định hiển thị tấm ảnh ở giữa (ảnh số 4)
 
   const transformsByOffset = {
     '-3': {
@@ -147,7 +147,7 @@
     });
   });
 
-  // Touch swipe support on carousel
+  // Hỗ trợ vuốt ngang bằng ngón tay trên điện thoại để chuyển ảnh
   let startX = 0;
   viewport.addEventListener('touchstart', (e) => {
     startX = e.touches[0].clientX;
@@ -161,7 +161,7 @@
     }
   }, { passive: true });
 
-  // Lightbox Modal
+  // Hộp thoại xem ảnh phóng to (Lightbox Modal)
   const lightboxModal = document.getElementById('lightbox-modal');
   const lightboxMainImg = document.getElementById('lightbox-main-img');
   const lightboxCounter = document.getElementById('lightbox-counter');

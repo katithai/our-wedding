@@ -1,9 +1,9 @@
 /* ==========================================================================
-   Modals (Gift Box & RSVP) + Red Envelope Fallback SVG
-   - Kết nối form Xác nhận tham dự (RSVP) với Google Sheets & Bộ lọc từ cấm
+   Hộp thoại Hộp Quà Mừng (Gift Box) & Xác Nhận Tham Dự (RSVP)
+   - Kết nối biểu mẫu Xác nhận tham dự (RSVP) với Google Sheets & Bộ lọc từ cấm
    ========================================================================== */
 
-// Fallback SVG for the red lucky envelope in Hộp Quà Mừng
+// Hình ảnh SVG dự phòng cho phong bì lì xì đỏ trong mục Hộp Quà Mừng
 window.__RED_ENVELOPE_SVG =
   'data:image/svg+xml;utf8,' +
   encodeURIComponent(`

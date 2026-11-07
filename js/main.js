@@ -1,5 +1,6 @@
 /* ==========================================================================
-   Welcome Overlay, Dynamic Guest Name (?to=...), Background Music & Auto-Scroll
+   Màn hình Bìa Thiệp (Welcome Overlay), Giải mã Tên Khách Mời (?id=...),
+   Nhạc nền & Tự động cuộn trang mượt mà
    ========================================================================== */
 
 (function () {
@@ -90,7 +91,7 @@
     }
   }
 
-  // ---------------- 1. BACKGROUND MUSIC ----------------
+  // ---------------- 1. ĐIỀU KHIỂN NHẠC NỀN ----------------
   const audio = document.getElementById('bg-music');
   const musicBtn = document.getElementById('music-toggle-btn');
   const musicDisc = document.getElementById('music-disc');
@@ -114,7 +115,7 @@
         setMusicVisualState(true);
       })
       .catch(() => {
-        // Browser blocked autoplay until first user gesture
+        // Trình duyệt chặn tự động phát cho đến khi người dùng tương tác lần đầu
       });
   }
 

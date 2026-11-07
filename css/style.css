@@ -1,8 +1,8 @@
 /* ==========================================================================
-   Minimalism Dark Red Wedding Invitation - Stylesheet
+   Thiệp Cưới Tối Giản Đỏ Đậm (Minimalism Dark Red) - Bảng định kiểu CSS
    ========================================================================== */
 
-/* Custom utilities & Tailwind v4 compatibility shims */
+/* Các lớp tiện ích tùy chỉnh & tương thích với Tailwind CSS */
 .pt-15 {
   padding-top: 3.75rem;
 }
@@ -31,7 +31,7 @@
 }
 
 /* ==========================================================================
-   Keyframe Animations
+   Định nghĩa các hiệu ứng chuyển động (Keyframe Animations)
    ========================================================================== */
 
 @keyframes drFloat {
@@ -150,7 +150,7 @@
 }
 
 /* ==========================================================================
-   Gift Envelope & Music Player Animation Classes
+   Các lớp hiệu ứng cho Phong bì Hộp Quà Mừng & Đĩa nhạc xoay
    ========================================================================== */
 
 .ienv-shadow {
@@ -208,7 +208,7 @@
 }
 
 /* ==========================================================================
-   Custom Scrollbar (Guestbook)
+   Thanh cuộn tùy chỉnh cho danh sách lời chúc (Sổ Lưu Bút)
    ========================================================================== */
 
 #guestbook-list::-webkit-scrollbar {
@@ -226,7 +226,7 @@
 }
 
 /* ==========================================================================
-   Anti-Save, Anti-Long-Press & Anti-Screenshot Protection (Mobile & Desktop)
+   Bảo vệ ảnh cưới: Chặn nhấn giữ lưu ảnh & kéo thả (Điện thoại & Máy tính)
    ========================================================================== */
 
 /* Chặn nhấn giữ lưu ảnh trên iOS/Android và chặn kéo thả */
