@@ -58,15 +58,35 @@
       overlayDateBanner.textContent = 'Thiệp Mời Cưới • 16.11.2026';
     }
 
-    // Đưa cột Nhà Gái sang bên trái, Nhà Trai sang bên phải
-    const parentsGrid = document.getElementById('parents-grid');
-    const groomCol = document.getElementById('parents-groom-col');
-    const divider = document.getElementById('parents-divider');
-    const brideCol = document.getElementById('parents-bride-col');
-    if (parentsGrid && groomCol && divider && brideCol) {
-      parentsGrid.prepend(brideCol);
-      parentsGrid.appendChild(divider);
-      parentsGrid.appendChild(groomCol);
+    // Đảo thứ tự tên Cô Dâu lên trước Chú Rể đúng theo thiệp in Nhà Gái
+    const overlayFirst = document.getElementById('overlay-name-first');
+    const overlaySecond = document.getElementById('overlay-name-second');
+    if (overlayFirst && overlaySecond) {
+      overlayFirst.textContent = 'Thanh Thúy';
+      overlaySecond.textContent = 'Cao Bằng';
+    }
+
+    const heroFirst = document.getElementById('hero-name-first');
+    const heroSecond = document.getElementById('hero-name-second');
+    if (heroFirst && heroSecond) {
+      heroFirst.textContent = 'Thanh Thúy';
+      heroSecond.textContent = 'Cao Bằng';
+    }
+
+    const ceremonyNameFirst = document.getElementById('ceremony-name-first');
+    const ceremonyRoleFirst = document.getElementById('ceremony-role-first');
+    const ceremonyNameSecond = document.getElementById('ceremony-name-second');
+    const ceremonyRoleSecond = document.getElementById('ceremony-role-second');
+    if (
+      ceremonyNameFirst &&
+      ceremonyRoleFirst &&
+      ceremonyNameSecond &&
+      ceremonyRoleSecond
+    ) {
+      ceremonyNameFirst.textContent = 'Thái Thị Thanh Thúy';
+      ceremonyRoleFirst.textContent = 'Trưởng Nữ';
+      ceremonyNameSecond.textContent = 'Trần Cao Bằng';
+      ceremonyRoleSecond.textContent = 'Trưởng Nam';
     }
 
     // Đổi thông tin Lễ Vu Quy & ngày 16/11/2026 (tức 08/10 năm Bính Ngọ)
@@ -126,11 +146,11 @@
         '&text=' + encodeURIComponent('Lễ Vu Quy Thanh Thúy & Cao Bằng') +
         '&dates=20261116/20261117' +
         '&ctz=Asia/Ho_Chi_Minh' +
-        '&details=' + encodeURIComponent('Lễ Vu Quy của Thái Thị Thanh Thúy & Trần Cao Bằng tại Tư gia Nhà Gái: Thôn Ngọc Lâm - xã Đức Thịnh - tỉnh Hà Tĩnh (FJXJ+647, Đức Thịnh, Hà Tĩnh)') +
+        '&details=' + encodeURIComponent('Lễ Vu Quy của Thái Thị Thanh Thúy & Trần Cao Bằng tại Tư gia Nhà Gái: Thôn Ngọc Lâm - xã Đức Thịnh - tỉnh Hà Tĩnh (Xóm 6, Thôn Ngọc Lâm - xã Đức Lâm - Đức Thọ - Hà Tĩnh)') +
         '&location=' + encodeURIComponent('18.498038,105.630297');
     }
 
-    // Cập nhật địa chỉ & bản đồ Tư gia Nhà Gái (FJXJ+647, Đức Thịnh, Hà Tĩnh)
+    // Cập nhật địa chỉ & bản đồ Tư gia Nhà Gái đúng theo thiệp in
     const mapVenueTitle = document.getElementById('map-venue-title');
     if (mapVenueTitle) mapVenueTitle.innerHTML = 'TẠI: TƯ GIA NHÀ&nbsp;GÁI';
 
@@ -141,7 +161,8 @@
 
     const mapVenueSubaddress = document.getElementById('map-venue-subaddress');
     if (mapVenueSubaddress) {
-      mapVenueSubaddress.textContent = '(FJXJ+647, xã Đức Thịnh, tỉnh Hà Tĩnh)';
+      mapVenueSubaddress.textContent =
+        '(Xóm 6, Thôn Ngọc Lâm - xã Đức Lâm - Đức Thọ - Hà Tĩnh)';
     }
 
     const mapIframe = document.getElementById('map-iframe');
