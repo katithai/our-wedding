@@ -89,7 +89,27 @@
       ceremonyRoleSecond.textContent = 'Trưởng Nam';
     }
 
-    // Đổi thông tin Lễ Vu Quy & ngày 16/11/2026 (tức 08/10 năm Bính Ngọ)
+    // Đổi các tiêu đề mục và thông tin sang Lễ Vu Quy (16/11/2026 - tức 08/10 năm Bính Ngọ)
+    const ceremonySectionHeading = document.getElementById('ceremony-section-heading');
+    if (ceremonySectionHeading) {
+      ceremonySectionHeading.innerHTML = 'THÔNG TIN LỄ VU&nbsp;QUY';
+    }
+
+    const receptionSectionHeading = document.getElementById('reception-section-heading');
+    if (receptionSectionHeading) {
+      receptionSectionHeading.innerHTML = 'THÔNG TIN TIỆC VU&nbsp;QUY';
+    }
+
+    const timelineSectionHeading = document.getElementById('timeline-section-heading');
+    if (timelineSectionHeading) {
+      timelineSectionHeading.innerHTML = 'LỊCH TRÌNH LỄ VU&nbsp;QUY';
+    }
+
+    const timelineCeremonyStep = document.getElementById('timeline-ceremony-step');
+    if (timelineCeremonyStep) {
+      timelineCeremonyStep.textContent = 'Nghi thức Lễ Vu Quy';
+    }
+
     const ceremonyTitle = document.getElementById('ceremony-title');
     if (ceremonyTitle) {
       ceremonyTitle.innerHTML = 'TRÂN TRỌNG THÔNG BÁO<br>LỄ VU QUY';
