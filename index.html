@@ -4,9 +4,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Thiệp Cưới Cao Bằng &amp; Thanh Thúy - 17.11.2026</title>
+  <title>Thiệp Cưới Cao Bằng &amp; Thanh Thúy</title>
   <meta name="description"
-    content="Trân trọng kính mời quý khách tới dự bữa cơm thân mật chung vui cùng gia đình chúng tôi vào Thứ Ba, ngày 17/11/2026.">
+    content="Trân trọng kính mời quý khách tới dự bữa cơm thân mật chung vui cùng gia đình chúng tôi. Sự hiện diện của quý khách là niềm vinh hạnh cho gia đình chúng tôi!">
   <meta name="theme-color" content="#511419">
 
   <!-- ================= THẺ CHIA SẺ MẠNG XÃ HỘI (ZALO, FACEBOOK, MESSENGER) ================= -->
@@ -15,7 +15,7 @@
   <meta property="og:site_name" content="Thiệp Cưới Cao Bằng &amp; Thanh Thúy">
   <meta property="og:title" content="Thiệp Mời Cưới: Cao Bằng &amp; Thanh Thúy">
   <meta property="og:description"
-    content="Trân trọng kính mời quý khách tới dự bữa cơm thân mật chung vui cùng gia đình chúng tôi vào Thứ Ba, ngày 17/11/2026. Sự hiện diện của quý khách là niềm vinh hạnh cho gia đình chúng tôi!">
+    content="Trân trọng kính mời quý khách tới dự bữa cơm thân mật chung vui cùng gia đình chúng tôi. Sự hiện diện của quý khách là niềm vinh hạnh cho gia đình chúng tôi!">
   <meta property="og:image" content="https://katithai.github.io/our-wedding/images/album/thumbnail.jpg">
   <meta property="og:image:alt" content="Ảnh cưới Cao Bằng &amp; Thanh Thúy">
   <meta property="og:image:width" content="1200">
@@ -26,7 +26,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Thiệp Mời Cưới: Cao Bằng &amp; Thanh Thúy">
   <meta name="twitter:description"
-    content="Trân trọng kính mời quý khách tới dự bữa cơm thân mật chung vui cùng gia đình chúng tôi vào Thứ Ba, ngày 17/11/2026.">
+    content="Trân trọng kính mời quý khách tới dự bữa cơm thân mật chung vui cùng gia đình chúng tôi. Sự hiện diện của quý khách là niềm vinh hạnh cho gia đình chúng tôi!">
   <meta name="twitter:image" content="https://katithai.github.io/our-wedding/images/album/thumbnail.jpg">
 
   <!-- Biểu tượng trang web (Icon chữ Hỷ trên tab trình duyệt) -->
@@ -82,7 +82,7 @@
       </span>
 
       <div class="relative z-10 flex flex-col items-center">
-        <p class="text-[11px] md:text-[12px] uppercase tracking-[0.25em] opacity-80"
+        <p id="overlay-date-banner" class="text-[11px] md:text-[12px] uppercase tracking-[0.25em] opacity-80"
           style="font-family: 'Cormorant Garamond', 'Times New Roman', serif;">
           Thiệp Mời Cưới • 17.11.2026
         </p>
@@ -241,10 +241,10 @@
                     </h2>
 
                     <!-- Thông tin đại diện hai bên gia đình (Nhà Trai - Nhà Gái) -->
-                    <div
+                    <div id="parents-grid"
                       class="relative w-full grid grid-cols-[1fr_auto_1fr] grid-rows-[repeat(4,auto)] justify-center gap-x-3 sm:gap-x-6 md:gap-x-8 gap-y-[4px] text-center"
                       style="color: rgb(236, 228, 216); font-family: Baskerville, 'Times New Roman', serif;">
-                      <div class="row-span-4 grid min-w-0 grid-rows-subgrid justify-items-center">
+                      <div id="parents-groom-col" class="row-span-4 grid min-w-0 grid-rows-subgrid justify-items-center">
                         <span class="text-[12px]" style="color: rgba(236, 228, 216, 0.7);"><span dir="auto">Nhà
                             Trai</span></span>
                         <span class="text-[clamp(11px,3.2vw,14px)] md:text-[15px] font-semibold whitespace-nowrap"
@@ -257,10 +257,10 @@
                         </div>
                       </div>
 
-                      <div class="row-span-4 h-[58px] w-[1px] shrink-0 self-center"
+                      <div id="parents-divider" class="row-span-4 h-[58px] w-[1px] shrink-0 self-center"
                         style="background-color: rgba(236, 228, 216, 0.4);"></div>
 
-                      <div class="row-span-4 grid min-w-0 grid-rows-subgrid justify-items-center">
+                      <div id="parents-bride-col" class="row-span-4 grid min-w-0 grid-rows-subgrid justify-items-center">
                         <span class="text-[12px]" style="color: rgba(236, 228, 216, 0.7);"><span dir="auto">Nhà
                             Gái</span></span>
                         <span class="text-[clamp(11px,3.2vw,14px)] md:text-[15px] font-semibold whitespace-nowrap"
@@ -277,7 +277,7 @@
                     <div
                       class="relative flex flex-col gap-1 text-center text-[13px] sm:text-[15px] md:text-[19px] leading-relaxed mx-auto md:max-w-[560px]"
                       style="font-family: Baskerville, 'Times New Roman', serif; color: rgb(236, 228, 216);">
-                      <span dir="auto">TRÂN TRỌNG THÔNG BÁO<br>LỄ THÀNH HÔN</span>
+                      <span id="ceremony-title" dir="auto">TRÂN TRỌNG THÔNG BÁO<br>LỄ THÀNH HÔN</span>
                     </div>
 
                     <div
@@ -306,7 +306,7 @@
                     <div class="relative flex flex-col items-center gap-4 md:gap-5 text-center"
                       style="font-family: Baskerville, 'Times New Roman', serif;">
                       <div style="color: rgba(236, 228, 216, 0.7);">
-                        <span dir="auto"
+                        <span id="ceremony-venue" dir="auto"
                           class="font-normal text-[14px] sm:text-[16px] md:text-[20px] leading-relaxed text-center">LỄ
                           THÀNH HÔN ĐƯỢC CỬ HÀNH TẠI<br>TƯ GIA NHÀ&nbsp;TRAI</span>
                       </div>
@@ -314,10 +314,10 @@
                         class="flex w-full max-w-[180px] md:max-w-[210px] items-center justify-between px-0 text-[13px] md:text-[15px] uppercase whitespace-nowrap min-w-max gap-x-3"
                         style="color: rgba(236, 228, 216, 0.7);">
                         <span>VÀO LÚC 10:30</span>
-                        <span><span dir="auto">THỨ BA</span></span>
+                        <span><span id="ceremony-weekday" dir="auto">THỨ BA</span></span>
                       </div>
                       <div class="flex items-center justify-center gap-4" style="color: rgb(236, 228, 216);">
-                        <span class="text-[40px] md:text-[46px] leading-none"
+                        <span id="ceremony-day" class="text-[40px] md:text-[46px] leading-none"
                           style="font-family: 'Times New Roman', serif; color: rgb(236, 228, 216);">17</span>
                         <div class="h-[46px] w-px" style="background-color: rgba(236, 228, 216, 0.45);"></div>
                         <div class="flex flex-col items-start justify-center gap-1 text-left">
@@ -328,7 +328,7 @@
                             style="font-family: 'Times New Roman', serif; color: rgb(236, 228, 216);">2026</span>
                         </div>
                       </div>
-                      <div class="text-xs md:text-sm uppercase tracking-[0.12em] px-0"
+                      <div id="ceremony-lunar" class="text-xs md:text-sm uppercase tracking-[0.12em] px-0"
                         style="color: rgba(236, 228, 216, 0.7); font-family: Baskerville, 'Times New Roman', serif;">
                         (Tức ngày 09 tháng 10 năm Bính&nbsp;Ngọ)
                       </div>
@@ -476,12 +476,12 @@
                       <div
                         class="flex w-full max-w-[130px] items-center justify-center px-0 text-[13px] md:text-[15px] uppercase whitespace-nowrap min-w-max gap-x-3"
                         style="color: rgba(236, 228, 216, 0.7);">
-                        <span><span dir="auto">THỨ BA</span></span>
+                        <span><span id="reception-weekday" dir="auto">THỨ BA</span></span>
                       </div>
 
                       <div class="flex items-center justify-center gap-4"
                         style="color: rgb(236, 228, 216); font-family: 'Times New Roman', serif;">
-                        <span class="text-[40px] md:text-[46px] leading-none"
+                        <span id="reception-day" class="text-[40px] md:text-[46px] leading-none"
                           style="color: rgb(236, 228, 216);">17</span>
                         <div class="h-[46px] w-px" style="background-color: rgba(236, 228, 216, 0.45);"></div>
                         <div class="flex flex-col items-start justify-center gap-1 text-left">
@@ -491,7 +491,7 @@
                         </div>
                       </div>
 
-                      <div class="text-xs md:text-sm uppercase tracking-[0.12em] px-0"
+                      <div id="reception-lunar" class="text-xs md:text-sm uppercase tracking-[0.12em] px-0"
                         style="color: rgba(236, 228, 216, 0.7);">
                         (Tức ngày 09 tháng 10 năm Bính&nbsp;Ngọ)
                       </div>
@@ -552,9 +552,9 @@
                                 class="text-[12px] md:text-[13px]">14</span></div>
                             <div class="flex items-center justify-center h-[30px] md:h-[34px]"><span
                                 class="text-[12px] md:text-[13px]">15</span></div>
-                            <div class="flex items-center justify-center h-[30px] md:h-[34px]"><span
+                            <div id="calendar-day-16" class="flex items-center justify-center h-[30px] md:h-[34px]"><span
                                 class="text-[12px] md:text-[13px]">16</span></div>
-                            <div class="flex items-center justify-center h-[30px] md:h-[34px]">
+                            <div id="calendar-day-17" class="flex items-center justify-center h-[30px] md:h-[34px]">
                               <div
                                 class="relative w-[26px] h-[24px] md:w-[30px] md:h-[28px] flex items-center justify-center">
                                 <svg viewBox="0 0 24 22" class="absolute inset-0 w-full h-full drop-shadow-sm"
@@ -597,7 +597,7 @@
                         </div>
                       </div>
 
-                      <a href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=%C4%90%C3%A1m%20c%C6%B0%E1%BB%9Bi%20Cao%20B%E1%BA%B1ng%20%26%20Thanh%20Th%C3%BAy&amp;dates=20261117/20261118&amp;ctz=Asia/Ho_Chi_Minh&amp;details=L%E1%BB%85%20Th%C3%A0nh%20H%C3%B4n%20c%E1%BB%A7a%20Tr%E1%BA%A7n%20Cao%20B%E1%BA%B1ng%20%26%20Th%C3%A1i%20Th%E1%BB%8B%20Thanh%20Th%C3%BAy%20t%E1%BA%A1i%20T%C6%B0%20gia%20Nh%C3%A0%20Trai%3A%20Th%C3%B4n%20%C4%90%E1%BA%A1i%20Th%E1%BA%AFng%20-%20x%C3%A3%20%C4%90%E1%BB%A9c%20Th%E1%BB%8Bnh%20-%20t%E1%BB%89nh%20H%C3%A0%20T%C4%A9nh%20(%C4%90%E1%BB%99i%209%2C%20x%C3%B3m%20M%E1%BB%9Bi%20-%20x%C3%A3%20%C4%90%E1%BB%A9c%20Thanh%20-%20%C4%90%E1%BB%A9c%20Th%E1%BB%8D%20-%20H%C3%A0%20T%C4%A9nh)%20-%20B%E1%BA%A3n%20%C4%91%E1%BB%93%3A%20https%3A%2F%2Fmaps.app.goo.gl%2FYSjTWqWmSsAJvCLVA&amp;location=18.489319%2C105.651554"
+                      <a id="add-to-calendar-link" href="https://www.google.com/calendar/render?action=TEMPLATE&amp;text=%C4%90%C3%A1m%20c%C6%B0%E1%BB%9Bi%20Cao%20B%E1%BA%B1ng%20%26%20Thanh%20Th%C3%BAy&amp;dates=20261117/20261118&amp;ctz=Asia/Ho_Chi_Minh&amp;details=L%E1%BB%85%20Th%C3%A0nh%20H%C3%B4n%20c%E1%BB%A7a%20Tr%E1%BA%A7n%20Cao%20B%E1%BA%B1ng%20%26%20Th%C3%A1i%20Th%E1%BB%8B%20Thanh%20Th%C3%BAy%20t%E1%BA%A1i%20T%C6%B0%20gia%20Nh%C3%A0%20Trai%3A%20Th%C3%B4n%20%C4%90%E1%BA%A1i%20Th%E1%BA%AFng%20-%20x%C3%A3%20%C4%90%E1%BB%A9c%20Th%E1%BB%8Bnh%20-%20t%E1%BB%89nh%20H%C3%A0%20T%C4%A9nh%20(%C4%90%E1%BB%99i%209%2C%20x%C3%B3m%20M%E1%BB%9Bi%20-%20x%C3%A3%20%C4%90%E1%BB%A9c%20Thanh%20-%20%C4%90%E1%BB%A9c%20Th%E1%BB%8D%20-%20H%C3%A0%20T%C4%A9nh)%20-%20B%E1%BA%A3n%20%C4%91%E1%BB%93%3A%20https%3A%2F%2Fmaps.app.goo.gl%2FYSjTWqWmSsAJvCLVA&amp;location=18.489319%2C105.651554"
                         target="_blank" rel="noopener noreferrer"
                         class="mt-3 inline-flex items-center justify-center text-sm underline underline-offset-4"
                         style="color: rgb(236, 228, 216); font-family: 'Times New Roman', serif; background: none;">
@@ -628,24 +628,24 @@
                   <div class="relative text-center">
                     <h3 class="uppercase text-center"
                       style="color: rgb(81, 20, 25); font-family: 'Times New Roman', serif; font-weight: 700; letter-spacing: 0.03em;">
-                      <span dir="auto">TẠI: TƯ GIA NHÀ&nbsp;TRAI</span>
+                      <span id="map-venue-title" dir="auto">TẠI: TƯ GIA NHÀ&nbsp;TRAI</span>
                     </h3>
                     <div
                       class="mx-auto mt-2 max-w-[300px] text-center text-[13px] leading-relaxed md:max-w-[460px] md:text-[15px]"
                       style="background-color: transparent; color: rgba(81, 20, 25, 0.85); font-family: Baskerville, 'Times New Roman', serif;">
-                      <span dir="auto" class="font-semibold">Thôn Đại Thắng - xã Đức Thịnh - tỉnh Hà Tĩnh</span><br>
-                      <span dir="auto" class="text-[11px] md:text-[13px] opacity-80">(Đội 9, xóm Mới - xã Đức Thanh -
+                      <span id="map-venue-address" dir="auto" class="font-semibold">Thôn Đại Thắng - xã Đức Thịnh - tỉnh Hà Tĩnh</span><br>
+                      <span id="map-venue-subaddress" dir="auto" class="text-[11px] md:text-[13px] opacity-80">(Đội 9, xóm Mới - xã Đức Thanh -
                         Đức Thọ - Hà Tĩnh)</span>
                     </div>
                   </div>
 
                   <div class="relative flex flex-col items-center gap-4 md:gap-5 w-full">
-                    <iframe
+                    <iframe id="map-iframe"
                       class="mt-3 h-[268px] w-full max-w-[338px] overflow-hidden rounded-[15px] md:h-[380px] md:max-w-[560px]"
                       src="https://www.google.com/maps?q=18.489319,105.651554&amp;z=17&amp;output=embed"
                       loading="lazy" allowfullscreen="" referrerpolicy="no-referrer-when-downgrade"
                       style="border-color: rgb(81, 20, 25);"></iframe>
-                    <a href="https://maps.app.goo.gl/YSjTWqWmSsAJvCLVA"
+                    <a id="map-directions-link" href="https://maps.app.goo.gl/YSjTWqWmSsAJvCLVA"
                       target="_blank" rel="noopener noreferrer"
                       class="inline-flex items-center gap-2 rounded-full px-5 py-2 text-sm md:text-base font-semibold transition-transform hover:scale-[1.03]"
                       style="background-color: transparent; color: rgba(81, 20, 25, 0.8); font-family: Baskerville, 'Times New Roman', serif;">
@@ -908,10 +908,10 @@
                           Hộp Quà Mừng</h2>
                       </div>
                       <div class="p-4 sm:p-6">
-                        <div class="grid grid-cols-2 gap-3 sm:gap-6 items-start justify-items-center"
+                        <div id="gift-qr-grid" class="grid grid-cols-2 gap-3 sm:gap-6 items-start justify-items-center"
                           style="color: rgb(81, 20, 25);">
                           <!-- Mã QR Chú Rể -->
-                          <div class="flex flex-col items-center w-full max-w-[200px]">
+                          <div id="qr-groom-card" class="flex flex-col items-center w-full max-w-[200px]">
                             <h3 class="mb-2 text-xs sm:text-sm font-semibold uppercase tracking-wider text-center"
                               style="color: rgb(81, 20, 25); font-family: 'Times New Roman', serif;">Chú Rể</h3>
                             <div
@@ -939,7 +939,7 @@
                           </div>
 
                           <!-- Mã QR Cô Dâu -->
-                          <div class="flex flex-col items-center w-full max-w-[200px]">
+                          <div id="qr-bride-card" class="flex flex-col items-center w-full max-w-[200px]">
                             <h3 class="mb-2 text-xs sm:text-sm font-semibold uppercase tracking-wider text-center"
                               style="color: rgb(81, 20, 25); font-family: 'Times New Roman', serif;">Cô Dâu</h3>
                             <div
@@ -1066,11 +1066,11 @@
   </div>
 
   <!-- Các tệp kịch bản JavaScript của ứng dụng -->
-  <script src="js/config.js?v=11"></script>
-  <script src="js/modals.js?v=11"></script>
-  <script src="js/carousel.js?v=11"></script>
-  <script src="js/guestbook.js?v=11"></script>
-  <script src="js/main.js?v=11"></script>
+  <script src="js/config.js?v=13"></script>
+  <script src="js/modals.js?v=13"></script>
+  <script src="js/carousel.js?v=13"></script>
+  <script src="js/guestbook.js?v=13"></script>
+  <script src="js/main.js?v=13"></script>
 </body>
 
 </html>

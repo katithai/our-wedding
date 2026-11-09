@@ -51,8 +51,124 @@
   if (overlayGuestEl) overlayGuestEl.textContent = DEFAULT_GUEST_NAME;
   if (inlineGuestEl) inlineGuestEl.textContent = DEFAULT_GUEST_NAME;
 
+  // Chuyển đổi nội dung sang phiên bản Nhà Gái (Lễ Vu Quy - 16/11/2026)
+  function applyBrideSideContent() {
+    const overlayDateBanner = document.getElementById('overlay-date-banner');
+    if (overlayDateBanner) {
+      overlayDateBanner.textContent = 'Thiệp Mời Cưới • 16.11.2026';
+    }
+
+    // Đưa cột Nhà Gái sang bên trái, Nhà Trai sang bên phải
+    const parentsGrid = document.getElementById('parents-grid');
+    const groomCol = document.getElementById('parents-groom-col');
+    const divider = document.getElementById('parents-divider');
+    const brideCol = document.getElementById('parents-bride-col');
+    if (parentsGrid && groomCol && divider && brideCol) {
+      parentsGrid.prepend(brideCol);
+      parentsGrid.appendChild(divider);
+      parentsGrid.appendChild(groomCol);
+    }
+
+    // Đổi thông tin Lễ Vu Quy & ngày 16/11/2026 (tức 08/10 năm Bính Ngọ)
+    const ceremonyTitle = document.getElementById('ceremony-title');
+    if (ceremonyTitle) {
+      ceremonyTitle.innerHTML = 'TRÂN TRỌNG THÔNG BÁO<br>LỄ VU QUY';
+    }
+
+    const ceremonyVenue = document.getElementById('ceremony-venue');
+    if (ceremonyVenue) {
+      ceremonyVenue.innerHTML =
+        'LỄ VU QUY ĐƯỢC CỬ HÀNH TẠI<br>TƯ GIA NHÀ&nbsp;GÁI';
+    }
+
+    const ceremonyWeekday = document.getElementById('ceremony-weekday');
+    if (ceremonyWeekday) ceremonyWeekday.textContent = 'THỨ HAI';
+
+    const ceremonyDay = document.getElementById('ceremony-day');
+    if (ceremonyDay) ceremonyDay.textContent = '16';
+
+    const ceremonyLunar = document.getElementById('ceremony-lunar');
+    if (ceremonyLunar) {
+      ceremonyLunar.innerHTML = '(Tức ngày 08 tháng 10 năm Bính&nbsp;Ngọ)';
+    }
+
+    const receptionWeekday = document.getElementById('reception-weekday');
+    if (receptionWeekday) receptionWeekday.textContent = 'THỨ HAI';
+
+    const receptionDay = document.getElementById('reception-day');
+    if (receptionDay) receptionDay.textContent = '16';
+
+    const receptionLunar = document.getElementById('reception-lunar');
+    if (receptionLunar) {
+      receptionLunar.innerHTML = '(Tức ngày 08 tháng 10 năm Bính&nbsp;Ngọ)';
+    }
+
+    // Chuyển dấu trái tim trên lịch nhỏ từ ngày 17 sang ngày 16
+    const day16El = document.getElementById('calendar-day-16');
+    const day17El = document.getElementById('calendar-day-17');
+    if (day16El && day17El) {
+      day16El.innerHTML = `
+        <div class="relative w-[26px] h-[24px] md:w-[30px] md:h-[28px] flex items-center justify-center">
+          <svg viewBox="0 0 24 22" class="absolute inset-0 w-full h-full drop-shadow-sm" fill="#511419">
+            <path d="M12 21C12 21 1.5 13.5 1.5 7.5C1.5 4.46 3.96 2 7 2C8.76 2 10.35 2.81 11.4 4.09L12 4.8L12.6 4.09C13.65 2.81 15.24 2 17 2C20.04 2 22.5 4.46 22.5 7.5C22.5 13.5 12 21 12 21Z"></path>
+          </svg>
+          <span class="relative z-10 text-[11px] md:text-[12px] font-bold" style="color: rgb(255, 255, 255);">16</span>
+        </div>
+      `;
+      day17El.innerHTML = '<span class="text-[12px] md:text-[13px]">17</span>';
+    }
+
+    // Cập nhật link "Thêm vào lịch" (Google Calendar) cho ngày 16/11/2026 tại Nhà Gái
+    const calendarLink = document.getElementById('add-to-calendar-link');
+    if (calendarLink) {
+      calendarLink.href =
+        'https://www.google.com/calendar/render?action=TEMPLATE' +
+        '&text=' + encodeURIComponent('Lễ Vu Quy Thanh Thúy & Cao Bằng') +
+        '&dates=20261116/20261117' +
+        '&ctz=Asia/Ho_Chi_Minh' +
+        '&details=' + encodeURIComponent('Lễ Vu Quy của Thái Thị Thanh Thúy & Trần Cao Bằng tại Tư gia Nhà Gái: Thôn Ngọc Lâm - xã Đức Thịnh - tỉnh Hà Tĩnh (FJXJ+647, Đức Thịnh, Hà Tĩnh)') +
+        '&location=' + encodeURIComponent('18.498038,105.630297');
+    }
+
+    // Cập nhật địa chỉ & bản đồ Tư gia Nhà Gái (FJXJ+647, Đức Thịnh, Hà Tĩnh)
+    const mapVenueTitle = document.getElementById('map-venue-title');
+    if (mapVenueTitle) mapVenueTitle.innerHTML = 'TẠI: TƯ GIA NHÀ&nbsp;GÁI';
+
+    const mapVenueAddress = document.getElementById('map-venue-address');
+    if (mapVenueAddress) {
+      mapVenueAddress.textContent = 'Thôn Ngọc Lâm - xã Đức Thịnh - tỉnh Hà Tĩnh';
+    }
+
+    const mapVenueSubaddress = document.getElementById('map-venue-subaddress');
+    if (mapVenueSubaddress) {
+      mapVenueSubaddress.textContent = '(FJXJ+647, xã Đức Thịnh, tỉnh Hà Tĩnh)';
+    }
+
+    const mapIframe = document.getElementById('map-iframe');
+    if (mapIframe) {
+      mapIframe.src =
+        'https://www.google.com/maps?q=18.498038,105.630297&z=17&output=embed';
+    }
+
+    const mapDirectionsLink = document.getElementById('map-directions-link');
+    if (mapDirectionsLink) {
+      mapDirectionsLink.href =
+        'https://www.google.com/maps/search/?api=1&query=' +
+        encodeURIComponent('FJXJ+647, Đức Thịnh, Hà Tĩnh');
+    }
+
+    // Đưa mã QR Cô Dâu lên trước Chú Rể trong Hộp Quà Mừng
+    const giftQrGrid = document.getElementById('gift-qr-grid');
+    const qrBrideCard = document.getElementById('qr-bride-card');
+    if (giftQrGrid && qrBrideCard) {
+      giftQrGrid.prepend(qrBrideCard);
+    }
+  }
+
   const urlParams = new URLSearchParams(window.location.search);
   const encodedId = urlParams.get('id');
+  const sideParam = (urlParams.get('side') || urlParams.get('ben') || '').toLowerCase();
+  let isBrideSide = sideParam === 'nhagai' || sideParam === 'bride' || sideParam === 'gai';
 
   if (encodedId) {
     try {
@@ -67,9 +183,20 @@
       // Giải mã Base64 tiếng Việt (fatal: true bắt lỗi ngay nếu byte UTF-8 bị hỏng)
       const binary = atob(encodedId);
       const bytes = Uint8Array.from(binary, (char) => char.charCodeAt(0));
-      const guestName = new TextDecoder('utf-8', { fatal: true })
+      let decodedStr = new TextDecoder('utf-8', { fatal: true })
         .decode(bytes)
         .trim();
+
+      // Kiểm tra tiền tố bên mời ('G|' = Nhà Gái, 'T|' = Nhà Trai)
+      if (decodedStr.startsWith('G|')) {
+        isBrideSide = true;
+        decodedStr = decodedStr.slice(2).trim();
+      } else if (decodedStr.startsWith('T|')) {
+        isBrideSide = false;
+        decodedStr = decodedStr.slice(2).trim();
+      }
+
+      const guestName = decodedStr;
 
       // Giải mã thành công mới gán tên
       if (guestName) {
@@ -89,6 +216,11 @@
       // Nếu mã sai hoặc thiếu ký tự -> giữ nguyên mặc định "Quý Khách"
       console.error('Mã ID không hợp lệ');
     }
+  }
+
+  window.__WEDDING_SIDE = isBrideSide ? 'nhagai' : 'nhatrai';
+  if (isBrideSide) {
+    applyBrideSideContent();
   }
 
   // ---------------- 1. ĐIỀU KHIỂN NHẠC NỀN ----------------

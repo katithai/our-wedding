@@ -62,7 +62,9 @@ window.copyBankInfo = function (accNum, btnEl, qrUrl, fileName) {
       const btn = rsvpForm.querySelector('button[type="submit"]');
 
       const guestName = (nameInput ? nameInput.value : '').trim();
-      const attendStatus = attendRadio && attendRadio.value === 'no' ? 'Không thể đến' : 'Tôi sẽ đến';
+      const sideLabel = window.__WEDDING_SIDE === 'nhagai' ? 'Nhà Gái' : 'Nhà Trai';
+      const baseAttend = attendRadio && attendRadio.value === 'no' ? 'Không thể đến' : 'Tôi sẽ đến';
+      const attendStatus = `${baseAttend} (${sideLabel})`;
       const guestCount = attendRadio && attendRadio.value === 'no' ? 0 : Number(countSelect ? countSelect.value : 1);
 
       if (typeof window.validateWeddingText === 'function') {

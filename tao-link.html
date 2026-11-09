@@ -32,6 +32,51 @@
             text-align: center;
             opacity: 0.75;
         }
+        .side-selector {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 14px;
+        }
+        .side-option {
+            position: relative;
+        }
+        .side-option input {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .side-label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 8px;
+            border: 1.5px solid rgba(81, 20, 25, 0.25);
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 700;
+            color: #511419;
+            background: #faf5ed;
+            transition: all 0.15s ease;
+            text-align: center;
+        }
+        .side-label span {
+            font-size: 11px;
+            font-weight: 500;
+            opacity: 0.75;
+            margin-top: 2px;
+        }
+        .side-option input:checked + .side-label {
+            background: #511419;
+            color: #ece4d8;
+            border-color: #511419;
+            box-shadow: 0 4px 12px rgba(81, 20, 25, 0.22);
+        }
+        .side-option input:checked + .side-label span {
+            opacity: 0.9;
+        }
         .input-wrap {
             position: relative;
         }
@@ -140,6 +185,24 @@
         <h2>Tạo Link Khách Mời</h2>
         <p class="subtitle">Thiệp cưới Cao Bằng &amp; Thanh Thúy</p>
 
+        <!-- Chọn bên Nhà Trai hoặc Nhà Gái -->
+        <div class="side-selector">
+            <label class="side-option">
+                <input type="radio" name="weddingSide" value="nhatrai" checked onchange="if(document.getElementById('guestName').value.trim()) generateLink()">
+                <div class="side-label">
+                    Nhà Trai
+                    <span>Lễ Thành Hôn • 17/11</span>
+                </div>
+            </label>
+            <label class="side-option">
+                <input type="radio" name="weddingSide" value="nhagai" onchange="if(document.getElementById('guestName').value.trim()) generateLink()">
+                <div class="side-label">
+                    Nhà Gái
+                    <span>Lễ Vu Quy • 16/11</span>
+                </div>
+            </label>
+        </div>
+
         <div class="input-wrap">
             <input type="text" id="guestName" placeholder="Nhập tên khách mời (vd: Gia đình chú Tư)..." autocomplete="off">
             <button type="button" class="clear-btn" onclick="clearInput()" title="Xóa nhanh">✕</button>
@@ -148,7 +211,7 @@
         <button type="button" class="btn-primary" onclick="generateLink()">Tạo Link Mời</button>
         
         <div class="result" id="resultContainer" style="display: none;">
-            <div class="preview-name">Khách mời: <strong id="previewGuest"></strong></div>
+            <div class="preview-name">Khách mời: <strong id="previewGuest"></strong> <span id="previewSide" style="font-size: 12px; opacity: 0.8;"></span></div>
             <a id="resultLink" class="link-box" href="#" target="_blank"></a>
             <div class="action-row">
                 <button type="button" id="copyBtn" class="btn-copy" onclick="copyLink()">📋 Sao chép Link</button>
@@ -178,8 +241,12 @@
             const name = inputEl.value.trim();
             if (!name) return alert("Vui lòng nhập tên khách mời!");
 
+            const selectedSide = document.querySelector('input[name="weddingSide"]:checked').value;
+            // Nếu là Nhà Gái thì gắn tiền tố 'G|' vào trước tên khách trước khi mã hóa Base64
+            const rawPayload = selectedSide === 'nhagai' ? ('G|' + name) : name;
+
             // Xử lý mã hóa Base64 an toàn cho Tiếng Việt (UTF-8)
-            const utf8Bytes = new TextEncoder().encode(name);
+            const utf8Bytes = new TextEncoder().encode(rawPayload);
             const base64Str = btoa(String.fromCodePoint(...utf8Bytes));
 
             // Ghép vào URL
@@ -188,6 +255,8 @@
 
             // Hiển thị kết quả
             document.getElementById('previewGuest').textContent = name;
+            document.getElementById('previewSide').textContent =
+                selectedSide === 'nhagai' ? '— [Thiệp Nhà Gái • 16/11]' : '— [Thiệp Nhà Trai • 17/11]';
             const linkElement = document.getElementById('resultLink');
             linkElement.href = currentGeneratedUrl;
             linkElement.textContent = currentGeneratedUrl;
