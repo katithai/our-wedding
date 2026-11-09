@@ -147,10 +147,10 @@
         '&dates=20261116/20261117' +
         '&ctz=Asia/Ho_Chi_Minh' +
         '&details=' + encodeURIComponent('Lễ Vu Quy của Thái Thị Thanh Thúy & Trần Cao Bằng tại Tư gia Nhà Gái: Thôn Ngọc Lâm - xã Đức Thịnh - tỉnh Hà Tĩnh (Xóm 6, Thôn Ngọc Lâm - xã Đức Lâm - Đức Thọ - Hà Tĩnh)') +
-        '&location=' + encodeURIComponent('18.498038,105.630297');
+        '&location=' + encodeURIComponent('18.498917,105.628667');
     }
 
-    // Cập nhật địa chỉ & bản đồ Tư gia Nhà Gái đúng theo thiệp in
+    // Cập nhật địa chỉ & bản đồ Tư gia Nhà Gái đúng theo thiệp in (18°29'56.1"N 105°37'43.2"E)
     const mapVenueTitle = document.getElementById('map-venue-title');
     if (mapVenueTitle) mapVenueTitle.innerHTML = 'TẠI: TƯ GIA NHÀ&nbsp;GÁI';
 
@@ -168,14 +168,13 @@
     const mapIframe = document.getElementById('map-iframe');
     if (mapIframe) {
       mapIframe.src =
-        'https://www.google.com/maps?q=18.498038,105.630297&z=17&output=embed';
+        'https://www.google.com/maps?q=18.498917,105.628667&z=17&output=embed';
     }
 
     const mapDirectionsLink = document.getElementById('map-directions-link');
     if (mapDirectionsLink) {
       mapDirectionsLink.href =
-        'https://www.google.com/maps/search/?api=1&query=' +
-        encodeURIComponent('FJXJ+647, Đức Thịnh, Hà Tĩnh');
+        'https://www.google.com/maps/search/?api=1&query=18.498917%2C105.628667';
     }
 
     // Đưa mã QR Cô Dâu lên trước Chú Rể trong Hộp Quà Mừng
