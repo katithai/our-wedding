@@ -187,28 +187,34 @@
   }
 
   const urlParams = new URLSearchParams(window.location.search);
-  const encodedId = urlParams.get('id');
+  let rawId = urlParams.get('id') || '';
   const sideParam = (urlParams.get('side') || urlParams.get('ben') || '').toLowerCase();
   let isBrideSide = sideParam === 'nhagai' || sideParam === 'bride' || sideParam === 'gai';
 
-  if (encodedId) {
+  if (rawId) {
     try {
-      // Kiểm tra chặt: nếu chuỗi Base64 bị thiếu dù chỉ 1 ký tự (không chia hết cho 4) hoặc sai định dạng -> báo lỗi ngay
+      // 1. Kiểm tra tiền tố không mã hóa ở ngay đầu chuỗi ID (ví dụ: g_ hoặc g-)
+      if (rawId.startsWith('g_') || rawId.startsWith('g-') || rawId.startsWith('G_') || rawId.startsWith('G-')) {
+        isBrideSide = true;
+        rawId = rawId.slice(2);
+      }
+
+      // Kiểm tra chặt chuỗi Base64: độ dài chia hết cho 4 và chỉ chứa ký tự hợp lệ
       if (
-        encodedId.length % 4 !== 0 ||
-        !/^[A-Za-z0-9+/]+={0,2}$/.test(encodedId)
+        rawId.length % 4 !== 0 ||
+        !/^[A-Za-z0-9+/]+={0,2}$/.test(rawId)
       ) {
         throw new Error('Mã ID bị thiếu ký tự');
       }
 
       // Giải mã Base64 tiếng Việt (fatal: true bắt lỗi ngay nếu byte UTF-8 bị hỏng)
-      const binary = atob(encodedId);
+      const binary = atob(rawId);
       const bytes = Uint8Array.from(binary, (char) => char.charCodeAt(0));
       let decodedStr = new TextDecoder('utf-8', { fatal: true })
         .decode(bytes)
         .trim();
 
-      // Kiểm tra tiền tố bên mời ('G|' = Nhà Gái, 'T|' = Nhà Trai)
+      // Hỗ trợ dự phòng nếu chuỗi cũ có chứa tiền tố G| / T|
       if (decodedStr.startsWith('G|')) {
         isBrideSide = true;
         decodedStr = decodedStr.slice(2).trim();

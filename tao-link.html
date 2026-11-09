@@ -241,17 +241,15 @@
             const name = inputEl.value.trim();
             if (!name) return alert("Vui lòng nhập tên khách mời!");
 
-            const selectedSide = document.querySelector('input[name="weddingSide"]:checked').value;
-            // Nếu là Nhà Gái thì gắn tiền tố 'G|' vào trước tên khách trước khi mã hóa Base64
-            const rawPayload = selectedSide === 'nhagai' ? ('G|' + name) : name;
-
-            // Xử lý mã hóa Base64 an toàn cho Tiếng Việt (UTF-8)
-            const utf8Bytes = new TextEncoder().encode(rawPayload);
+            // Mã hóa Base64 an toàn cho Tiếng Việt (UTF-8) trên tên khách
+            const utf8Bytes = new TextEncoder().encode(name);
             const base64Str = btoa(String.fromCodePoint(...utf8Bytes));
 
-            // Ghép vào URL
+            // Ghép vào URL: Nếu Nhà Gái thì đặt tiền tố "g_" ngay trước chuỗi mã (không mã hóa)
+            // Ví dụ: ?id=g_xxx (Nhà Gái) hoặc ?id=xxx (Nhà Trai)
+            const idParam = (selectedSide === 'nhagai' ? 'g_' : '') + base64Str;
             const baseUrl = "https://katithai.github.io/our-wedding/?id=";
-            currentGeneratedUrl = baseUrl + encodeURIComponent(base64Str);
+            currentGeneratedUrl = baseUrl + encodeURIComponent(idParam);
 
             // Hiển thị kết quả
             document.getElementById('previewGuest').textContent = name;
